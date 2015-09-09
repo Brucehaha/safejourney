@@ -1,0 +1,404 @@
+/* This is the css file for our system */ 
+ 
+body {       
+    font-family:Arial, Helvetica, sans-serif;       
+	}
+
+.navbar-brand {
+    font-size:1.6em;
+    position:relative;
+    left:-10px;
+	}
+       
+#login {     
+    position:relative;
+	left:10px;
+    }
+
+#words {
+    font-size:0.9em;
+    position:relative;
+    left:-1px;
+    }
+	
+#topContainer{
+    padding:0;
+    margin:0;
+	}
+       
+#midContainer {
+    background-image:url("images/bg3.jpg");
+    height:1000px;
+    width:100%;
+    background-size:cover;
+    margin:0;
+    padding:0;
+	}
+	
+.contentContainer {
+    height:800px;
+    }
+      
+#topRow {
+    margin-top:150px;
+    text-align:center;
+    }
+       
+#topRow h1{
+    font-size:300%;
+    }
+
+       
+.transparent {
+    opacity:0.5;
+    position:relative;
+    top:-10px;
+    }
+       
+.padding-top {
+    position:relative;
+    left:10px;
+    border:none;
+    top:5px;
+    }
+       
+strong {
+    font-size:1.5em;
+    }
+     
+.paddingTop {
+    margin-top:55px;
+    }
+     
+.center {
+    text-align:center;
+    }
+	
+#footer {
+	background-color:#B0D1FB;
+    padding-top:40px;
+    width:100%;
+    padding:0;
+    margin:0;
+    height:100px;
+	}
+
+.marginTop {
+   
+	}
+
+.marginBottom {
+	margin-bottom:30px;
+	}
+  
+#news {
+	border-right:1px solid #535353;
+	height:400px;
+	padding-left:0;
+	margin-left:0;
+	}
+
+#videoPosition {
+	height:300px;
+	}
+  
+#info {
+	height:600px;
+	}
+
+#foottext {
+	width:100%;
+    font-size:15px;
+    background-color:#F8F8F8;
+    height:40px;
+    padding-top:10px;
+	}
+	
+#content {
+	color:#535353;
+	font-size:1em;
+	font-weight:400;
+	padding-top:8px;
+	text-align:center;
+	}
+  
+.break {
+	clear:both;
+	}
+ 
+.date {
+	font-weight:bold;
+	}
+	
+#screensize {
+	height:400px;
+	}
+	
+.newsfont {
+	color:#1F4F82;
+	font-size:0.8em;
+	}
+	
+.newscontent {
+	font-size:1.2em;
+	margin:0;
+	padding:0;
+	}
+	
+#news ul {
+	list-style:none;
+	line-height:1.1em;
+	}
+
+#news a {
+	text-decoration:none;
+	}
+	
+a:link {
+    color:#535353;
+	}
+	
+#imgfloat {
+	float:left;
+	}
+
+.aboutcontainer {
+	margin-top:70px;
+    text-align:center;
+	}
+
+.aboutcontainer2 {
+	margin-top:50px;
+    text-align:left;
+	}
+
+.aboutimage {
+	margin-bottom:50px;
+	}
+	
+.aboutcontainer3 {
+	margin-top:50px;
+    text-align:center;
+	}
+	
+#midContainerAbout {
+    background-image:
+		linear-gradient(
+		  rgba(255, 255, 255, .5),
+		  rgba(0, 0, 0, .5)
+		),
+		url("images/bgAbout.jpg");
+	background-size:cover;
+    height:1000px;
+    width:100%;
+    margin:0;
+    padding:0;	
+	}
+	
+#topRowAbout{
+	margin:180px 20px;
+    text-align:center; 
+	position:relative;
+	}
+	
+.slogan{
+	font-style: italic;
+	color: #B6B6B6;
+	font-size: 36px;
+	margin-top: 20px;
+	text-align: center;
+	text-shadow: 0 1px 1px #fff;
+	margin-bottom:70px;
+	}
+		
+.heading-campaign{
+	font-family:'Source Sans Pro', sans-serif;
+	font-size:600%;
+	color:white;
+	font-weight:bold;
+	}
+	   
+a.linkDetails{
+	border: 2px solid #006600;
+	border-radius: 10px;
+	background-color: #009900;
+	color: #ffffff;
+	font-weight: bold;
+	text-decoration: none;
+	margin : 20px;
+	padding: 10px 20px 10px 20px;
+	display: inline-block;
+	}
+		
+a.linkDetails:hover {
+	border: 2px solid #009900;
+	background-color: #00cc00;
+	}
+ 	
+.contetnContainer3{
+	text-align:center;
+	margin:20px;
+	}
+
+.contetnContainer4{
+	text-align:center;
+	margin:20px;
+	}
+
+#feedbackcontainer{
+	background-image:
+		linear-gradient(
+		  rgba(255, 255, 255, .6),
+		  rgba(255, 255, 255, .6)
+		),
+		url("images/feedback.jpg");
+	background-size:cover;
+    height:1000px;
+    width:100%;
+    margin:0;
+    padding:0;
+	}
+	
+#midContainer {
+    height:100%;
+    width:100%;
+    background-size:cover;
+    margin:0;
+    padding:0;       
+    }
+         
+#topRowSearch{
+    margin-top:20px;
+    text-align:center;   
+	}
+   
+table {
+    width:auto;
+    color:grey;       
+    }
+       
+#tableTop {
+    padding-top:60px;
+    }
+
+.emailForm {
+	border:1px solid grey;
+	border-radius:10px;
+	margin-top:20px;
+	}
+	
+.registerForm {
+	border:1px solid grey;
+	border-radius:10px;
+	margin-top:20px;
+	}
+
+form {
+	padding-bottom:20px;
+	}
+
+#suburbdiv ul {
+	width: 206px;
+	border: 1px solid #eaeaea;
+	position: absolute;
+	z-index: 9;
+	background: #f3f3f3;
+	list-style: none;
+	}
+
+#suburbdiv ul li {
+	padding: 2px;
+	text-align:left;
+	}
+	
+#suburbdiv  ul li:hover {
+	background: #eaeaea;
+	}     
+
+#suburb_list_id {
+	display: none;
+	}
+
+#streetdiv ul {
+	width: 206px;
+	border: 1px solid #eaeaea;
+	position: absolute;
+	z-index: 9;
+	background: #f3f3f3;
+	list-style: none;
+	}
+	
+#streetdiv ul li {
+	padding: 2px;
+	text-align:left;
+	}
+	
+#streetdiv  ul li:hover {
+	background: #eaeaea;
+	}     
+
+#street_list_id {
+	display: none;
+	}  
+<!--home page -->
+
+
+
+<!--GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */-->
+
+body {
+  padding-bottom: 40px;
+  color: #5a5a5a;
+}
+
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+  opacity:0.8;
+}
+/*button*/
+.btn {
+    background: #198F6F;
+    color: #ffffff;
+	border:none;
+}
+
+.btn:focus {
+    background: #31E0AE
+}
+
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper > .container {
+  padding-right: 0;
+  padding-left: 0;
+}
+.navbar-wrapper .navbar {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.navbar-wrapper .navbar .container {
+  width: auto;
+}
+#movie {
+	
+	padding-top:10px; 
+}
+
+
+
+
+
+
+       
+  
