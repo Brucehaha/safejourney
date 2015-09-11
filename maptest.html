@@ -86,7 +86,7 @@
 			});
 			var infoWindow = new google.maps.InfoWindow;
 		}	*/
-		//function to get the information for pop up box when click the markder
+		//function to get the information for pop up box when click the marker
 		function bindInfoWindow(marker, map, infoWindow, html) {
 			google.maps.event.addListener(marker, 'click', function() {
 				infoWindow.setContent(html);
