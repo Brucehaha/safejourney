@@ -132,7 +132,7 @@
 	
 			document.getElementById('submit').addEventListener('click', function() {
 				calculateAndDisplayRoute(directionsService, map, start, end)
-				setRectangle();
+				setRectangle(startCode(), endCode());
 			});
 			
 			
@@ -171,21 +171,10 @@
 			});  
 			
 		}
-		
-		function setRectangle(){
-		       var geocoder = new google.maps.Geocoder();
-               var start = document.getElementById('start').value;
-			   var end = document.getElementById('end').value;
-				//In this case it gets the address from an element on the page, but obviously you  could just pass it to the method instead
-
-				geocoder.geocode( {'start':start}, function(results, status) {
-				  if (status == google.maps.GeocoderStatus.OK) {
-					//In this case it creates a marker, but you can get the lat and lng from the location.LatLng
-					var bounds1 = results[0].geometry.location;
-					geocoder.geocode( {'end':end}, function(results, status){ 
-					  if (status == google.maps.GeocoderStatus.OK) {
-						//In this case it creates a marker, but you can get the lat and lng from the location.LatLng
-						var bounds2 = results[1].geometry.location;
+			
+			
+	     function setRectangle(start, end){
+		      
 						
 						var rectangle = new google.maps.Rectangle({
 							strokeColor: '#FF0000',
@@ -195,28 +184,54 @@
 							fillOpacity: 0.35,
 							map: map,
 							bounds: new google.maps.LatLngBounds(
-								bounds1,
-								bounds2)
+								start,
+								end)
 						 });
 				        
-					  
-					   
-				      } else {
-						alert("Geocode was not successful for the following reason: " + status);
-					  }
-					 });
+	    }		
+		    
+		function startCode(){
+		       var geocoder = new google.maps.Geocoder();
+               var start = document.getElementById('start').value;
+				//In this case it gets the address from an element on the page, but obviously you  could just pass it to the method instead
+                var bounds1;
+				geocoder.geocode( {'start':start}, function(results, status) {
+				  if (status == google.maps.GeocoderStatus.OK) {
+					//In this case it creates a marker, but you can get the lat and lng from the location.LatLng
+					var bounds1 = results[0].geometry.location;
+					
 				  } else {
 					alert("Geocode was not successful for the following reason: " + status);
 				  }
 				});
 			
 		
+		        return bounds1;
 		
 		
-		
-	}		
+	    }
+
+
+        function endCode(){
+		       var geocoder = new google.maps.Geocoder();
+               var start = document.getElementById('end').value;
+				//In this case it gets the address from an element on the page, but obviously you  could just pass it to the method instead
+                var bounds2;
+				geocoder.geocode( {'end':start}, function(results, status) {
+				  if (status == google.maps.GeocoderStatus.OK) {
+					//In this case it creates a marker, but you can get the lat and lng from the location.LatLng
+					var bounds2 = results[0].geometry.location;
+					
+				  } else {
+					alert("Geocode was not successful for the following reason: " + status);
+				  }
+				});
 			
-	         
+		
+		        return bounds2;
+		
+		
+	    }				
 		
 		
          
