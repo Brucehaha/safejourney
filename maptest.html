@@ -79,12 +79,12 @@
 		};
 		
 		//function to get the information for pop up box when click the marker
-		// function bindInfoWindow(marker, map, infoWindow, html) {
-// 			google.maps.event.addListener(marker, 'click', function() {
-// 				infoWindow.setContent(html);
-// 				infoWindow.open(map, marker);
-// 			});
-// 		}
+	function bindInfoWindow(marker, map, infoWindow, html) {
+			google.maps.event.addListener(marker, 'click', function() {
+				infoWindow.setContent(html);
+				infoWindow.open(map, marker);
+			});
+		}
        //function to connect xmp(url) file to get data
 		function downloadUrl(url, callback) {
 			var request = window.ActiveXObject ?
@@ -135,52 +135,38 @@
 			
 			downloadUrl("mapxml.php", function(data) {
 				
-				var points;
+				var points = [];
 				var xml = data.responseXML;
 				var markers = xml.documentElement.getElementsByTagName("marker");
 				
 				for (var i = 0; i < markers.length; i++) {
 					//var accidentno = markers[i].getAttribute("AccidentNo");
 					//var nodeid = markers[i].getAttribute("NodeID");
-					//var count = markers[i].getAttribute("Count");
-					//var nodetype = markers[i].getAttribute("NodeType");
+					var count = markers[i].getAttribute("Count");
+					var nodetype = markers[i].getAttribute("NodeType");
 					var point = new google.maps.LatLng(
 						parseFloat(markers[i].getAttribute("Latitude")),
 						parseFloat(markers[i].getAttribute("Longitude")));
 					
 					 points.push(point);
 					//var html = "<b>" + accidentno + "</b> <br/>" + point;
-					// var html = "<b>Number of Accidents:" + count + "</b> <br/>" + point;
-// 					var icon = customIcons[nodetype] || {};
-// 					var marker = new google.maps.Marker({
-// 						map: map,
-// 						position: point,
-// 						icon: icon.icon
-// 					});
-// 					bindInfoWindow(marker, map, infoWindow, html);
+					var html = "<b>Number of Accidents:" + count + "</b> <br/>" + point;
+					var icon = customIcons[nodetype] || {};
+					var marker = new google.maps.Marker({
+						map: map,
+						position: point,
+						icon: icon.icon
+					});
+					bindInfoWindow(marker, map, infoWindow, html);
                    
 				}
 			});  
 			
-			var heatmap = new google.maps.visualization.HeatmapLayer({
-	
-					data: points,
-					map: map
-			});
+			
 
 		}
          
-         
-         function returnPoints() {
-         
-         
-         
-         
-         
-         
-         
-         
-         }        
+      
 
 		//google route function--->
 		function calculateAndDisplayRoute(directionsService, map) {		
