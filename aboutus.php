@@ -70,7 +70,7 @@
 	<div font-familty="Arial" class="container contentContainer3" id="aboutvideo">
 		<div class="row">
 		    <div class="col-md-5">
-			<h1>About Us</h1>
+			<h1>About Us...</h1>
 			 <h3><span class="text-muted">Watch the excited video on right and get more details</span></h3>
 			
 			<p class="lead">
