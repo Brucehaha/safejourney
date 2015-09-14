@@ -1,7 +1,7 @@
 	<?php
 	// PDO connect *********
 	function connect() {
-		return new PDO('mysql:host=localhost;dbname=cl56-henningdb', 'cl56-henningdb', 'KW/Cedw9x', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+		return new PDO('mysql:host=localhost;dbname=cl57-henningdb', 'cl57-henningdb', 'VK.nb3kcM', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 	}
 
 	$pdo = connect();
