@@ -36,7 +36,7 @@
  			
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="http://www.safejourneytowork.com" />Home</a></li>
+					<li><a href="http://217.199.187.198/masterminds.com/" />Home</a></li>
 					<li class="dropdown">
 						<a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 						Search
@@ -70,7 +70,7 @@
 	<div font-familty="Arial" class="container contentContainer3" id="aboutvideo">
 		<div class="row">
 		    <div class="col-md-5">
-			<h1>About Us...</h1>
+			<h1>About Us</h1>
 			 <h3><span class="text-muted">Watch the excited video on right and get more details</span></h3>
 			
 			<p class="lead">

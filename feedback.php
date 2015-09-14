@@ -32,7 +32,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand navbar-left" href="http://217.199.187.198/masterminds.com/">SafeJourney</a>  
+				<a class="navbar-brand navbar-left" href="www.safejourneytowork.com">SafeJourney</a>  
 			</div>
 				
 			<div class="collapse navbar-collapse">

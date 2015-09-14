@@ -132,8 +132,10 @@
 			});
 		  
 			// Change this depending on the name of your PHP file
-			var points;
+			
 			downloadUrl("mapxml.php", function(data) {
+				
+				var points;
 				var xml = data.responseXML;
 				var markers = xml.documentElement.getElementsByTagName("marker");
 				
@@ -167,7 +169,18 @@
 			});
 
 		}
-
+         
+         
+         function returnPoints() {
+         
+         
+         
+         
+         
+         
+         
+         
+         }        
 
 		//google route function--->
 		function calculateAndDisplayRoute(directionsService, map) {		
@@ -218,7 +231,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand navbar-left" href="http://217.199.187.198/masterminds.com/">SafeJourney</a>  
+				<a class="navbar-brand navbar-left" href="http://www.safejourneytowork.tk">SafeJourney</a>  
 			</div>
 				
 			<div class="collapse navbar-collapse">
