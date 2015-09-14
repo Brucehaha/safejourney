@@ -51,7 +51,6 @@
 
 	   </style>
 	   
-	   
   </head>
   
   <body>
@@ -108,7 +107,8 @@
 				<p style="font-size:150%;color:grey;margin:30px 10px;background-color:#EBF5FF;">For past five years, there are much more accidents happened. There will show the accident rate trend by year.</p> 
 			</div>
 		</div>
-
+		
+		<? include("morris.php"); ?>
 		<div class="row">
 			<!-- Display the line chart here -->
 			<div class="col-md-6">
@@ -118,7 +118,6 @@
 				<div id="table1" style="height: 350px;">
 					<h4 style="color:#ACC9E6;font-weight:bold;">Number of Accidents occurred for past five years</h4>
 					<?php 
-						include("morris.php"); 
 						$i=1;
 						echo "<table class='table table-bordered table-hover' id='showTable'>";
 						echo "<tr><th>#</th><th>Year</th><th>No. of Accidents</th></tr>";
@@ -143,7 +142,6 @@
 				<div id="table2" style="height: 350px;">
 					<h4 style="color:#ACC9E6;font-weight:bold;">Number of Accidents by Light Condition</h4>
 					<?php 
-						include("morris.php"); 
 						$i=1;
 						echo "<table class='table table-bordered table-hover' id='showTable'>";
 						echo "<tr><th>#</th><th>Light Condition</th><th>No. of Accidents</th></tr>";
@@ -177,7 +175,6 @@
 				<div id="table3" style="height: 350px;">
 					<h4 style="color:#ACC9E6;font-weight:bold;">Number of Accidents by daytime</h4>
 					<?php 
-						include("morris.php"); 
 						$timeOfDay = array("Morning", "Afternoon", "Evening", "Night");
 						echo "<table class='table table-bordered table-hover' id='showTable'>";
 						echo "<tr><th>#</th><th>Daytime</th><th>No. of Accidents</th></tr>";
@@ -201,6 +198,7 @@
     <script src="js/bootstrap.min.js"></script>   
 	<!--Draw bar chart and line chart for accident-->
 	<script>
+		<? include("morris.php"); ?>
 		//Morris charts snippet - js
 		$.getScript('http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js',function(){
 			$.getScript('http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js',function(){
@@ -208,7 +206,6 @@
 					element: 'lineChart',
 					data: [	
 						<?php 	
-							include("morris.php");
 							while($row = mysqli_fetch_array($result1)) {    
 								$year = $row[0];
 								$count = $row[1];
@@ -226,8 +223,7 @@
 				Morris.Bar({
 					element: 'barChart',
 					data: [	
-						<?php 
-							include("morris.php"); 
+						<?php  
 							while($row1 = mysqli_fetch_array($result2)) {    
 								$condition = $row1[0];
 								$count1 = $row1[1];
@@ -263,5 +259,17 @@
 		});
 		
 	</script> 
+	
+	<?php
+		//Release the SQL clause
+			mysqli_free_result($result1);
+			mysqli_free_result($result2);
+			mysqli_free_result($result3);
+			mysqli_free_result($result4);
+			mysqli_free_result($result5);
+			mysqli_free_result($result6);
+		//Close the connection to database
+			mysqli_close($conn);
+	?>
   </body>
 </html>
