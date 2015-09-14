@@ -79,12 +79,12 @@
 		};
 		
 		//function to get the information for pop up box when click the marker
-		// function bindInfoWindow(marker, map, infoWindow, html) {
-// 			google.maps.event.addListener(marker, 'click', function() {
-// 				infoWindow.setContent(html);
-// 				infoWindow.open(map, marker);
-// 			});
-// 		}
+		  <!-- function bindInfoWindow(marker, map, infoWindow, html) { -->
+  			<!-- google.maps.event.addListener(marker, 'click', function() { -->
+ 				<!-- infoWindow.setContent(html); -->
+ 				<!-- infoWindow.open(map, marker); -->
+ 			<!-- }); -->
+ 		<!-- } -->
        //function to connect xmp(url) file to get data
 		function downloadUrl(url, callback) {
 			var request = window.ActiveXObject ?
@@ -135,7 +135,7 @@
 			
 			downloadUrl("mapxml.php", function(data) {
 				
-				var points;
+				var points =[];
 				var xml = data.responseXML;
 				var markers = xml.documentElement.getElementsByTagName("marker");
 				
@@ -170,17 +170,7 @@
 
 		}
          
-         
-         function returnPoints() {
-         
-         
-         
-         
-         
-         
-         
-         
-         }        
+        
 
 		//google route function--->
 		function calculateAndDisplayRoute(directionsService, map) {		
