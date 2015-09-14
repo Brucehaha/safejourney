@@ -13,8 +13,7 @@
 			{
 				//Connect to database server and table
                 include("connection.php");
-				//need to keep outside of this file 
-				@mysqli_select_db($conn, "cl57-henningdb")
+				@mysqli_select_db($conn, "cl56-henningdb")
 				or die ("Database not available");
 				
 				$querySql1 = "select * from Infringement 
@@ -33,7 +32,7 @@
 					echo "<table class='table table-bordered table-hover' id='showTable'>";
 					echo "<tr><th>#</th><th>Location</th><th>Suburb</th><th>No. of Infringements</th><th>Fines($)</th></tr>";
 					while($Row = mysqli_fetch_array($result1)){
-						echo "<tr><td>".$i."</td><td>Intersection of ".$Row['Street1']." and ".$Row['Street2']."</td><td>".$Row['Suburb']."</td><td>".$Row['NoOfInfringement']."</td><td>".NUMBER_FORMAT($Row['Fines'], 2, '.', ',')."</td></tr>";
+						echo "<tr><td>".$i."</td><td>Intersection of ".$Row['Street1']." and ".$Row['Street2']."</td><td>".$Row['Suburb']."</td><td>".NUMBER_FORMAT($Row['NoOfInfringement'],0,'.',',')."</td><td>".NUMBER_FORMAT($Row['Fines'], 0, '.', ',')."</td></tr>";
 						$i++;
 					}
 					echo "</table>";
