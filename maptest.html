@@ -132,7 +132,7 @@
 	
 			document.getElementById('submit').addEventListener('click', function() {
 				calculateAndDisplayRoute(directionsService, map, start, end)
-				setRectangle(startCode(), endCode());
+				setRectangle(startCode(), endCode(), map);
 			});
 			
 			
@@ -173,7 +173,7 @@
 		}
 			
 			
-	     function setRectangle(start, end){
+	     function setRectangle(start, end, map){
 		      
 						
 						var rectangle = new google.maps.Rectangle({
