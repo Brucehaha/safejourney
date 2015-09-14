@@ -132,10 +132,10 @@
 			});
 		  
 			// Change this depending on the name of your PHP file
-			
+	
 			downloadUrl("mapxml.php", function(data) {
 				
-				var points =[];
+				var points = [];
 				var xml = data.responseXML;
 				var markers = xml.documentElement.getElementsByTagName("marker");
 				
@@ -168,6 +168,14 @@
 					map: map
 			});
 
+		}
+		
+		function getPoints() {
+		
+			
+		
+		
+		
 		}
          
         
