@@ -227,7 +227,8 @@
 					var marker = new google.maps.Marker({
 						map: map,
 						position: point,
-						icon: icon.icon
+						icon: icon.icon,	
+						zIndex:i
 					});
 					bindInfoWindow(marker, map, infoWindow, html);
 				   
