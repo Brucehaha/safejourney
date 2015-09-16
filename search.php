@@ -56,12 +56,12 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand navbar-left" href="http://www.safejourneytowork.com">SafeJourney</a>  
+				<a class="navbar-brand navbar-left" href="http://www.safejourneytowork.tk/">SafeJourney</a>  
  			</div>
  			
  			<div class="collapse navbar-collapse">
  			    <ul class="nav navbar-nav">	
- 			        <li><a href="http://217.199.187.198/masterminds.com/">Home</a></li>
+ 			        <li><a href="http://www.safejourneytowork.tk/">Home</a></li>
 					<li class="dropdown">
              			<a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 		Search
