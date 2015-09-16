@@ -31,12 +31,12 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand navbar-left" href="http://217.199.187.198/masterminds.com/">SafeJourney</a>  
+				<a class="navbar-brand navbar-left" href="http://www.safejourneytowork.tk/">SafeJourney</a>  
  			</div>
  			
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="http://217.199.187.198/masterminds.com/" />Home</a></li>
+					<li><a href="http://www.safejourneytowork.tk/" />Home</a></li>
 					<li class="dropdown">
 						<a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 						Search
@@ -71,10 +71,10 @@
 		<div class="row">
 		    <div class="col-md-5">
 			<h1>About Us</h1>
-			 <h3><span class="text-muted">Watch the excited video on right and get more details</span></h3>
+			 <h3><span class="text-muted">Watch the exciting video on the right and know more about our website and team "Master Minds".</span></h3>
 			
 			<p class="lead">
-			  This website can help you find more information about the location of the traffic infringement occurred most often and the accumulated accident happened during last year etc..<br />
+			  This website can help you find more information about the location of the traffic infringement occurred most often and the accumulated accident happened during past five years etc..<br />
 			</p>
 			</div>
 			<div id="movie" class="col-md-7">
@@ -88,20 +88,21 @@
 			<div class="row aboutcontainer2">
 				<h2>Fines? Accident? What do you concern more about on your way to work?</h2><br /><br /><br /><br />
 			</div>	
+			<hr>
 			<div class="row aboutimage">
 				<div class="col-md-4">
 					<img src="images/fines.jpg" class="img-responsive">
 				</div>
 				<div class="col-md-8">
-					<h2>Avoid a ticket? <span class="text-muted"> Mark places where you may get a ticket</span></h2>
-					<p class="lead">It summarizes and shows the location where people get a ticket frequently and  save your money. </p>
+					<h2>Know more details about your safe. <span class="text-muted"> Mark places where you may get fines...</span></h2>
+					<p class="lead">It summarizes and shows the location where people get fines frequently. </p>
 				</div>	
 			</div>
 
 			<div class="row aboutimage">
 			    <div class="col-md-8 ">
-				    <h2 class="featurette-heading">Keep your life safe. <span class="text-muted">Get accidents location </span></h2>
-					<p class="lead">In order to keep your journey safe, please view report here and remember. Warning you for everywhere. </p>
+				    <h2 class="featurette-heading">Concern about your safe on the way.  <span class="text-muted">Get accidents location... </span></h2>
+					<p class="lead">In order to keep your journey safe, please find out what you want to know in our website. We will provide more information useful for you. </p>
 				</div>
 				<div class="col-md-4">
 					<img src="images/accidentimg.jpg" class="img-responsive">
@@ -111,7 +112,7 @@
 
 	<!-- FOOTER -->
     <footer>
-		<p class="pull-right" style="margin-top:20px;"><a href="#">Back to top</a></p>
+		<p class="pull-right" style="margin-top:20px;margin-right:70px;"><a href="#">Back to top</a></p>
     </footer>
 	
 	<!-- JavaScript -->

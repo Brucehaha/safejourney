@@ -169,13 +169,13 @@ a:link {
 
 .aboutcontainer2 {
 	margin-top:50px;
-    text-align:left;
+    text-align:center;
 	}
 
 .aboutimage {
 	margin-bottom:50px;
 	}
-	
+/*	
 .aboutcontainer3 {
 	margin-top:50px;
     text-align:center;
@@ -200,7 +200,7 @@ a:link {
     text-align:center; 
 	position:relative;
 	}
-	
+*/	
 .slogan{
 	font-style: italic;
 	color: #B6B6B6;
@@ -390,8 +390,7 @@ body {
 .navbar-wrapper .navbar .container {
   width: auto;
 }
-#movie {
-	
+#movie {	
 	padding-top:10px; 
 }
 
