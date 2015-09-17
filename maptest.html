@@ -12,7 +12,7 @@
 	<!-- Bootstrap -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	
-	<script type="text/javascript" src="lib/Fluster2.packed.js"></script>
+
 
 	<!--JQuery and the its script must be put in the header or it will not work-->
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -114,7 +114,11 @@
 			
 			var map = new google.maps.Map(document.getElementById('map'), {	
 				zoom: 10,
-				center: {lat: -37.8602828, lng: 145.079616}
+				center: {lat: -37.8602828, lng: 145.079616},
+				zoomControl: true,
+			    zoomControlOptions: {
+			    position: google.maps.ControlPosition.RIGHT_CENTER
+			    }
 
 			});
 			
@@ -133,80 +137,42 @@
 			
 			
 			document.getElementById('submit').addEventListener('click', function() {
-				
-				geocodeStart(map);
-				
+
 				calculateAndDisplayRoute(directionsService, map, start, end);
 				
 			});
 			
 			
 			
-			
-			// Initialize Fluster and give it a existing map
-	var fluster = new Fluster2(map);
+	
 	
 
 	 downloadUrl("mapxml.php", function(data) {
 
-	
+	        var infoWindow = new google.maps.InfoWindow;
 			var xml = data.responseXML;
 			var markers = xml.documentElement.getElementsByTagName("marker");
 	
 			for (var i = 0; i < markers.length; i++) {
-				//var accidentno = markers[i].getAttribute("AccidentNo");
-				//var nodeid = markers[i].getAttribute("NodeID");
-				var count = markers[i].getAttribute("Count");
-				var nodetype = markers[i].getAttribute("NodeType");
-				var point = new google.maps.LatLng(
-					parseFloat(markers[i].getAttribute("Latitude")),
-					parseFloat(markers[i].getAttribute("Longitude")));
-					
-			// Create a new marker. Don't add it to the map!
+			//var accidentno = markers[i].getAttribute("AccidentNo");
+			//var nodeid = markers[i].getAttribute("NodeID");
+			var count = markers[i].getAttribute("Count");
+			var nodetype = markers[i].getAttribute("NodeType");
+			var point = new google.maps.LatLng(
+				parseFloat(markers[i].getAttribute("Latitude")),
+				parseFloat(markers[i].getAttribute("Longitude")));
+			//var html = "<b>" + accidentno + "</b> <br/>" + point;
+			var html = "<b>Number of Accidents:" + count + "</b> <br/>" + "<div onclick='getValue'>"+point+"</div>";
+			var icon = customIcons[nodetype] || {};
 			var marker = new google.maps.Marker({
+				map: map,
 				position: point,
-				title: 'Marker ' + i
+				icon: icon.icon
 			});
-	
-			// Add the marker to the Fluster
-			fluster.addMarker(marker);	
-				
-		   
+			bindInfoWindow(marker, map, infoWindow, html, point);
 			}
-	
-		});  
-	
-	
-	
-	
-	// Set styles
-	// These are the same styles as default, assignment is only for demonstration ...
-	fluster.styles = {
-		// This style will be used for clusters with more than 0 markers
-		0: {
-			image: 'http://gmaps-utility-library.googlecode.com/svn/trunk/markerclusterer/1.0/images/m1.png',
-			textColor: '#FFFFFF',
-			width: 53,
-			height: 52
-		},
-		// This style will be used for clusters with more than 10 markers
-		10: {
-			image: 'http://gmaps-utility-library.googlecode.com/svn/trunk/markerclusterer/1.0/images/m2.png',
-			textColor: '#FFFFFF',
-			width: 56,
-			height: 55
-		},
-		20: {
-			image: 'http://gmaps-utility-library.googlecode.com/svn/trunk/markerclusterer/1.0/images/m3.png',
-			textColor: '#FFFFFF',
-			width: 66,
-			height: 65
-		}
-	};
-	
-	// Initialize Fluster
-	// This will set event handlers on the map and calculate clusters the first time.
-	fluster.initialize();
+	});
+
 			
 	
 }
