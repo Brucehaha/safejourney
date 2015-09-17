@@ -12,11 +12,6 @@ function initialize() {
     var myOptions = {
       zoom: 3,
       center: myLatlng,
-      zoomControl: true,
-      zoomControlOptions: {
-      position: google.maps.ControlPosition.RIGHT_CENTER
-    },
-
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
