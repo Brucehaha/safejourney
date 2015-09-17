@@ -60,14 +60,14 @@
 						<input type="password" placeholder="Password" class="form-control" />
 					</div>
 						
-					<button type="submit" class="btn btn-success" id="login">Log In</button>
+					<button type="submit" class="btn" id="login">Log In</button>
 				</form>
 			</div>
 		</div>
     </div>
 	
 	<!-- Put the video about our system here -->
-	<div font-familty="Arial" class="container contentContainer3" id="aboutvideo">
+	<div class="container contentContainer3" id="aboutvideo">
 		<div class="row">
 		    <div class="col-md-5">
 			<h1>About Us</h1>
@@ -78,7 +78,7 @@
 			</p>
 			</div>
 			<div id="movie" class="col-md-7">
-				<iframe src="https://www.youtube.com/embed/Pqa5aNf46bo" frameborder="0" width="700" height="350" allowfullscreen></iframe>
+				<iframe src="https://www.youtube.com/embed/Pqa5aNf46bo" frameborder="0" width="100%" height="100%" allowfullscreen></iframe>
 			</div>
 	    </div>
     </div> 
@@ -114,11 +114,6 @@
     <footer>
 		<p class="pull-right" style="margin-top:20px;margin-right:70px;"><a href="#">Back to top</a></p>
     </footer>
-	
-	<!-- JavaScript -->
-	<!-- fit the background -->
-	<!-- make the background image fit for the size of screen -->
-	<script src="myjs.js" type="text/javascript"></script>
     
     <!-- Bootstrap -->
     <script src="js/bootstrap.min.js"></script>

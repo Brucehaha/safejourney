@@ -1,8 +1,15 @@
 <?php
+
+//Get the requested word to find the similar one in the database
 	$q=$_GET['q'];
-	$my_data=mysqli_real_escape_string($q);
-	$conn=mysqli_connect("localhost", "cl57-henningdb", "VK.nb3kcM","cl57-henningdb") 
+	$my_data=mysql_real_escape_string($q);
+	
+	//Connect to database server and table
+    include("connection.php");
+	@mysqli_select_db($conn, "cl57-henningdb") 
 	or die("No information return");
+	
+	//$sql = "SELECT SuburbName FROM Suburb WHERE lower(SuburbName) LIKE '%$my_data%' LIMIT 0, 10";
 	$sql = "SELECT DISTINCT Suburb FROM Infringement WHERE Suburb LIKE '%$my_data%' LIMIT 0, 10";
 	$result = mysqli_query($conn,$sql) 
 	or die("No data return");
