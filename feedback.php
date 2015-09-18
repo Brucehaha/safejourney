@@ -3,13 +3,13 @@
 <head>
 	<title>Your feedback</title>
 	<!-- call the outernal head file -->
-	<?php include("maps/head.html"); ?>
+	<?php include("includes/head.html"); ?>
 </head>
 
 <body>
-    <? include("feedbackphp.php");?>
+    <? include("includes/feedbackphp.php");?>
 	<!-- This is the code for the top of window to place the navigation button -->
-	<?php include("maps/header.html"); ?>
+	<?php include("includes/header.html"); ?>
 	
 	<!-- Main form for feedback by users -->
 	<!-- Users should enter the name, email, some comments -->
