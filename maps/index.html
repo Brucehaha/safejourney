@@ -40,45 +40,53 @@
 			}
 			
 		#panel {
+			
+			}
+			
+		.wraper {
+		
+			width:100%;
+			border-style:none;
+		}
+		.container{
+			
+			border-style:none;
+			
+		}
+		h3 {
+			text-decoration: none;
+		}
+		:focus, :active {
+			outline: 0;
+		}
+		* { 
+			-moz-box-sizing: border-box; 
+			-webkit-box-sizing: border-box; 
+			box-sizing: border-box;
+		}
+		
+		#accordion {
 			position: absolute;
-			top: 140px;
-			left: 7%;
+			top: 100px;
+			left: 6px;
+			 
 			z-index: 5;
 			background-color: #fff;
-			padding: 5px;
-			border: 1px solid #999;
 			text-align: center;
-			border-radius:8px;
-			}
-
-		/**
-		* Provide the following styles for both ID and class, where ID represents an
-		* actual existing "panel" with JS bound to its name, and the class is just
-		* non-map content that may already have a different ID with JS bound to its
-		* name.
-		*/
-
-		#panel, .panel {
-			font-family: 'Roboto','sans-serif';
-			line-height: 30px;
-			padding-left: 10px;
-			}
-
-		#panel select, #panel input, .panel select, .panel input {
-			font-size: 15px;
-			}
-
-		#panel select, .panel select {
-			width: 100%;
-			}
-
-		#panel i, .panel i {
-			font-size: 12px;
-			}
+			
+			
+			
+		}
+		h3 {
+		
+		outline:none;
+		}
+		
+	
     </style>
 	<script type="text/javascript">
 // OnLoad function ...
-	
+var directions = [];	
 function initialize() {
   	
 	// Create a new map with some default settings
@@ -105,7 +113,11 @@ function initialize() {
 			
 			
 			document.getElementById('submit').addEventListener('click', function() {
-
+                 if (directions && directions.length > 0) {
+					 for (var i=0; i<directions.length; i++)
+						 directions[i].setMap(null);
+				 }
+						directions = [];
 				calculateAndDisplayRoute(directionsService, map);
 				
 			});
@@ -219,11 +231,11 @@ function calculateAndDisplayRoute(directionsService, map) {
 		if (status === google.maps.DirectionsStatus.OK) {
 			 //store the multiple routes in respones and display one by one
 			 for (var i = 0, len = response.routes.length; i < len; i++) {
-				  new google.maps.DirectionsRenderer({
+				  directions.push(new google.maps.DirectionsRenderer({
 					map: map,
 					directions: response,
 					routeIndex: i
-				  });
+				  }));
 			}
 	
 		} else {
@@ -239,21 +251,42 @@ function calculateAndDisplayRoute(directionsService, map) {
 <body onload="initialize()">
 <div class="header"></div>
 <div id="map_canvas"></div>
-<div class="cotainer" id="panel">
-		<form>
-		<div class="form-group">
-			<label>Start </label>
-			<input type="text" id="start" value="Caulfield Station" class="form-control" />
-		</div>
-		<div class="form-group">
-			<label>End </label>
-			<input type="text" class="form-control"  id="end" value="Marlvern East Station" />
-		</div>
-			<input type="button" name="submit" class="btn" value="Search" id="submit" />
-		
-		</form>
-</div>
 
+<div class="container">
+    <div class="row">
+		<div class=" col-md-3" id="accordion" >
+			<h3>hello</h3>
+			<div class="wraper">
+					<form>
+					<div class="form-group">
+						<label>Start </label>
+						<input type="text" id="start" value="Caulfield Station" class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>End </label>
+						<input type="text" class="form-control"  id="end" value="Marlvern East Station" />
+					</div>
+						<input type="button" name="submit" class="btn" value="Search" id="submit" />
+					
+					</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+
+
+$(".container").hover(
+	function() {
+		$("#accordion").accordion({ header: "h3", collapsible: false, active: true});
+	}, function() {
+	
+		$("#accordion").accordion({ header: "h3", collapsible: true, active: false});
+	}
+
+);
+
+</script>
 <script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
