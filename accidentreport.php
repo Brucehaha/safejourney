@@ -12,6 +12,8 @@
 		<link rel="stylesheet" type="text/css" href="mystyle.css">
 		<!-- Bootstrap -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- Morris chart style -->
+		<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.5.1.css">
    
 		<!--JQuery-->
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -23,44 +25,20 @@
 			<!-- Responsive tables firefox -->
 			@-moz-document url-prefix() {
 				fieldset { display: table-cell; }
-			}
-			
-			.morris-hover{
-				position:absolute;
-				z-index:1000;}
-				
-			.morris-hover.morris-default-style{
-				border-radius:10px;
-				padding:6px;
-				color:#666;
-				background:rgba(255,255,255,0.8);
-				border:solid 2px rgba(230,230,230,0.8);
-				font-family:sans-serif;
-				font-size:12px;
-				text-align:center;}
-			
-			.morris-hover.morris-default-style .morris-hover-row-label{
-				font-weight:bold;
-				margin:0.25em 0;}
-			
-			.morris-hover.morris-default-style .morris-hover-point{
-				white-space:nowrap;
-				margin:0.1em 0;}
-
+			}			
 	   </style>
 	   
 	   <script type="text/javascript">
 			$(document).ready(function() {
-			//Initially hide all the divs with the paragraph which indicating the location of graphs
-			//$(".p1").hide();
-			//$(".p2").hide();
-			//$(".p3").hide();
-			//$("#resultpanel1").hide();
-			//$("#resultpanel2").hide();
-			//$("#resultpanel3").hide();
-			//$("#yearsearchresult").hide();
-			//$("#lightsearchresult").hide();
-			//$("#daytimesearchresult").hide();
+				//Initially hide all the divs with the paragraph which indicating the location of graphs
+				$("#searchList2").hide();
+				$("#resultpanel1").hide();
+				$("#resultpanel2").hide();
+				$("#resultpanel3").hide();
+				$("#resultpanel4").hide();
+				$("#resultpanel5").hide();
+				$("#resultpanel6").hide();
+				$("#resultpanel7").hide();
 			});
 	   </script>
   </head>
@@ -89,7 +67,7 @@
 							<li><a href="search.php">By Fine</a></li>
                 			<li><a href="accidentreport.php">By Accident</a></li>
                				<li role="separator" class="divider"></li>
-                			<li><a href="maptest.html">On Map</a></li>	 
+                			<li><a href="maps/index.php">On Map</a></li>	 
               			</ul>
            			</li>			         
  			        <li id="feedback"><a href="feedback.php">Feedback</a></li>
@@ -116,10 +94,26 @@
 			<div class="col-sm-12" style="text-align:center;">
 				<p style="font-size:160%;color:grey;margin:30px 10px;">In recent years, an increasing number of accidents happened on the road for daily frequent commuters. The safety is always the most important issue all the world wide.</p>  
 				<div>
+					<select id="searchList" name="searchList" style="width:150px;">
+						<option selected>Choose One...</option>
+						<option value="year">Year</option>
+						<option value="light">Light Condition</option>
+						<option value="daytime">Daytime</option>
+					</select>
+					<select id="searchList2" name="searchList2">
+						<option value="none" selected>Select seasons...</option>
+						<option value="season1">Season 1</option>
+						<option value="season2">Season 2</option>
+						<option value="season3">Season 3</option>
+						<option value="season4">Season 4</option>
+					</select>
+					<input type="submit" id="select" class="btn" name="searchBtn" value="Search" />
+<!--
 					<input type="radio" name="radiosearch" id="year" value="year" /> Year
 					<input type="radio" name="radiosearch" id="light" value="light" />Light Condition
 					<input type="radio" name="radiosearch" id="daytime" value="daytime" />Daytime
 					<input type="submit" id="select" class="btn" name="searchBtn" value="Search" />
+					-->
 				</div>
 				<hr>	
 			</div>
@@ -155,17 +149,16 @@
 				<div id="resultpanel3" style="height:350px;"></div>	
 			</div>
 			-->
-			
-			<div class="col-md-6 col-md-offset-3">
-								
-				<div id="resultpanel1" style="height:350px;"></div>
-	
-				 
-				<div id="resultpanel2" style="height:350px;"></div>
-				
-				
-				<div id="resultpanel3" style="height:350px;"></div>	
-			</div>
+			<div class="col-md-6 col-md-offset-3"> 					
+				<div id="resultpanel1"></div>
+				<div id="resultpanel2"></div>
+				<div id="resultpanel3"></div>	
+				<div id="resultpanel4"></div>
+				<div id="resultpanel5"></div>
+				<div id="resultpanel6"></div>
+				<div id="resultpanel7"></div>
+			</div>   
+
 		</div>
 	</div>		
 
@@ -179,11 +172,20 @@
 	
 	<!--Draw bar chart and line chart for accident-->
 	<script type="text/javascript">	
+		//when "year" option selected, the another dropdownlist selection shows
+		$("#searchList").change(function () {
+			if ($("#searchList option:selected").text() == "Year"){
+				$("#searchList2").show();
+			} else {
+				$("#searchList2").hide();
+			}
+		});
+		
 		<?php include("morris.php"); ?>
 		//Morris charts snippet - js
 		$.getScript('http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js',function(){
 			$.getScript('http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js',function(){
-				Morris.Line({
+				line1 = Morris.Line({
 					element: 'resultpanel1',
 					data: [	
 						<?php 	
@@ -198,10 +200,97 @@
 					],
 					xkey: 'y',
 					ykeys: ['a'],
-					labels: ['Accidents']					
+					labels: ['Accidents'],
+					resize: true
 				});
 				
-				Morris.Bar({
+				var months = ["Jan", "Feb", "Mar", "Apr"];
+				
+				line2 = Morris.Line({
+					element: 'resultpanel4',
+					data: [	
+						<?php 	
+							while($row2 = mysqli_fetch_array($result7)) {    
+								$month = $row2[0];
+								$count = $row2[1];
+								$myurl2[] = "{y: '".$month."', a: ".$count."},";
+							}       
+							$info2 = implode("",$myurl2);
+							echo $info2;
+						?>
+					],
+					xkey: 'y',
+					ykeys: ['a'],
+					labels: ['Accidents'],
+					resize: true,
+					xLabelFormat: function(x) { // <--- x.getMonth() returns valid index
+					var month = months[x.getMonth()];
+					return month;
+					},
+					dateFormat: function(x) {
+						var month = months[new Date(x).getMonth()];
+						return month;
+					},
+				});
+				
+				line3 = Morris.Line({
+					element: 'resultpanel5',
+					data: [	
+						<?php 	
+							while($row3 = mysqli_fetch_array($result8)) {    
+								$month = $row3[0];
+								$count = $row3[1];
+								$myurl3[] = "{y: '".$month."', a: ".$count."},";
+							}       
+							$info3 = implode("",$myurl3);
+							echo $info3;
+						?>
+					],
+					xkey: 'y',
+					ykeys: ['a'],
+					labels: ['Accidents'],
+					resize: true
+				});
+				
+				line4 = Morris.Line({
+					element: 'resultpanel6',
+					data: [	
+						<?php 	
+							while($row4 = mysqli_fetch_array($result9)) {    
+								$month = $row4[0];
+								$count = $row4[1];
+								$myurl4[] = "{y: '".$month."', a: ".$count."},";
+							}       
+							$info4 = implode("",$myurl4);
+							echo $info4;
+						?>
+					],
+					xkey: 'y',
+					ykeys: ['a'],
+					labels: ['Accidents'],
+					resize: true
+				});
+				
+				line5 = Morris.Line({
+					element: 'resultpanel7',
+					data: [	
+						<?php 	
+							while($row5 = mysqli_fetch_array($result10)) {    
+								$month = $row5[0];
+								$count = $row5[1];
+								$myurl5[] = "{y: '".$month."', a: ".$count."},";
+							}       
+							$info5 = implode("",$myurl5);
+							echo $info5;
+						?>
+					],
+					xkey: 'y',
+					ykeys: ['a'],
+					labels: ['Accidents'],
+					resize: true
+				});
+				
+				bar1 = Morris.Bar({
 					element: 'resultpanel2',
 					data: [	
 						<?php  
@@ -216,10 +305,11 @@
 					],
 					xkey: 'y',
 					ykeys: ['a'],
-					labels: ['Accidents']					
+					labels: ['Accidents'],
+					resize: true
 				});	
 
-				Morris.Bar({
+				bar2 = Morris.Bar({
 					element: 'resultpanel3',
 					data: [	
 						{y:'Morning', a:<?php include("morris.php");
@@ -233,49 +323,84 @@
 					],
 					xkey: 'y',
 					ykeys: ['a'],
-					labels: ['Accidents']					
+					labels: ['Accidents'],
+					resize: true
 				});		
 			});
 		});
-
-			$("#select").click(function () {
-				//Show line chart based on the selection of "Year"
-				if ($("input[name=radiosearch]:checked").val() == "year"){
-					//$("#yearsearchresult").show();
-					//$("#lightsearchresult").hide();
-					//$("#daytimesearchresult").hide();		
-					//$(".p1").show();
-					//$(".p2").hide();
-					//$(".p3").hide();
-					$("#resultpanel1").show();
-					$("#resultpanel2").hide();
-					$("#resultpanel3").hide();
-				} 
-				//Show bar chart based on the selection of "Light Condition"
-				else if ($("input[name=radiosearch]:checked").val() == "light") {
-					//$("#lightsearchresult").show();
-					//$("#yearsearchresult").hide();
-					//$("#daytimesearchresult").hide();	
-					//$(".p1").hide();
-			//$(".p2").show();
-			//$(".p3").hide();
-			$("#resultpanel1").hide();
-			$("#resultpanel2").show();
-			$("#resultpanel3").hide();
-				} 
-				//Show bar chart based on the selection of "Day Time": morning, afternoon, evening, night
-				else if ($("input[name=radiosearch]:checked").val() == "daytime") {
-					//$("#daytimesearchresult").show();
-					//$("#yearsearchresult").hide();
-					//$("#lightsearchresult").hide();
-					//$(".p1").hide();
-			//$(".p2").hide();
-			//$(".p3").show();
-			$("#resultpanel1").hide();
-			$("#resultpanel2").hide();
-			$("#resultpanel3").show();
-				}				
-			});
+		
+		//event handler after "Search" button click
+		$("#select").click(function () {
+			//Show line chart based on the selection of "Year"
+			if ($("#searchList option:selected").val() == "year" && $("#searchList2 option:selected").val() == "none"){
+				$("#resultpanel1").show();
+				$("#resultpanel2").hide();
+				$("#resultpanel3").hide();
+				$("#resultpanel4").hide();
+				$("#resultpanel5").hide();
+				$("#resultpanel6").hide();
+				$("#resultpanel7").hide();
+			} 
+			else if ($("#searchList option:selected").val() == "year" && $("#searchList2 option:selected").val() == "season1") {
+				$("#resultpanel1").hide();
+				$("#resultpanel2").hide();
+				$("#resultpanel3").hide();
+				$("#resultpanel4").show();
+				$("#resultpanel5").hide();
+				$("#resultpanel6").hide();
+				$("#resultpanel7").hide();
+			} 
+			else if ($("#searchList option:selected").val() == "year" && $("#searchList2 option:selected").val() == "season2") {
+				$("#resultpanel1").hide();
+				$("#resultpanel2").hide();
+				$("#resultpanel3").hide();
+				$("#resultpanel4").hide();
+				$("#resultpanel5").show();
+				$("#resultpanel6").hide();
+				$("#resultpanel7").hide();
+			}
+			else if ($("#searchList option:selected").val() == "year" && $("#searchList2 option:selected").val() == "season3") {
+				$("#resultpanel1").hide();
+				$("#resultpanel2").hide();
+				$("#resultpanel3").hide();
+				$("#resultpanel4").hide();
+				$("#resultpanel5").hide();
+				$("#resultpanel6").show();
+				$("#resultpanel7").hide();
+			}
+			else if ($("#searchList option:selected").val() == "year" && $("#searchList2 option:selected").val() == "season4") {
+				$("#resultpanel1").hide();
+				$("#resultpanel2").hide();
+				$("#resultpanel3").hide();
+				$("#resultpanel4").hide();
+				$("#resultpanel5").hide();
+				$("#resultpanel6").hide();
+				$("#resultpanel7").show();
+			}
+			//Show bar chart based on the selection of "Light Condition"
+			else if ($("#searchList option:selected").val() == "light") {
+				$("#resultpanel1").hide();
+				$("#resultpanel2").show();
+				$("#resultpanel3").hide();
+				$("#resultpanel4").hide();
+				$("#resultpanel5").hide();
+				$("#resultpanel6").hide();
+				$("#resultpanel7").hide();
+			} 
+			//Show bar chart based on the selection of "Day Time": morning, afternoon, evening, night
+			else if ($("#searchList option:selected").val() == "daytime") {
+				$("#resultpanel1").hide();
+				$("#resultpanel2").hide();
+				$("#resultpanel3").show();
+				$("#resultpanel4").hide();
+				$("#resultpanel5").hide();
+				$("#resultpanel6").hide();
+				$("#resultpanel7").hide();
+			}
+			else {
+				alert("Please select an option");
+			}
+		});
 
 	</script> 
 	
@@ -287,6 +412,10 @@
 			mysqli_free_result($result4);
 			mysqli_free_result($result5);
 			mysqli_free_result($result6);
+			mysqli_free_result($result7);
+			mysqli_free_result($result8);
+			mysqli_free_result($result9);
+			mysqli_free_result($result10);
 		//Close the connection to database
 			mysqli_close($conn);
 	?>
