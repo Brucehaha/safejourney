@@ -9,10 +9,8 @@
 	$querySql1 = "SELECT EXTRACT(YEAR FROM AccidentDate) AS 'AccidentYear', COUNT(*) AS 'Count' FROM Accident GROUP BY AccidentYear";
 	
 	//Count the number of accidents happened based on the seasons for past five years
-	//"SELECT Date_Format(AccidentDate, '%b') AS 'AccidentMonth', COUNT(*) AS 'Count' FROM Accident GROUP BY AccidentMonth";
 	//Season 1 between Jan and Mar
-	//"SELECT MONTHNAME(STR_TO_DATE(EXTRACT(MONTH FROM AccidentDate), '%m')) AS 'AccidentMonth', COUNT(*) AS 'Count' FROM Accident where EXTRACT(MONTH FROM AccidentDate) between 1 and 3 GROUP BY AccidentMonth order by FIELD(AccidentMonth, 'JANUARY', 'FEBRUARY', 'MARCH')";
-	$querySql7 = "SELECT Date_Format(AccidentDate, '%b') AS 'AccidentMonth', COUNT(*) AS 'Count' FROM Accident where EXTRACT(MONTH FROM AccidentDate) between 1 and 3 GROUP BY AccidentMonth order by FIELD(AccidentMonth, 'JAN', 'FEB', 'MAR')";
+	$querySql7 = "SELECT Date_Format(AccidentDate, '%b') AS 'AccidentMonth', COUNT(*) AS 'Count' FROM Accident where EXTRACT(MONTH FROM AccidentDate) between 1 and 3 GROUP BY AccidentMonth order by FIELD(AccidentMonth, 'JAN', 'FEB', 'MAR')";	
 	//Season 2 between Apr and Jun
 	$querySql8 = "SELECT Date_Format(AccidentDate, '%b') AS 'AccidentMonth', COUNT(*) AS 'Count' FROM Accident where EXTRACT(MONTH FROM AccidentDate) between 4 and 6 GROUP BY AccidentMonth order by FIELD(AccidentMonth, 'APR', 'MAY', 'JUN')";
 	//Season 3 between Jul and Sep
@@ -35,18 +33,22 @@
 	//Count the number of accidents occurred based on speed zone
 	$querySql12 = "SELECT SpeedZone, COUNT(*) AS 'Count' FROM Accident GROUP BY SpeedZone";
 	
-	//$querySql13 = "SELECT Date_Format(AccidentDate, '%b') AS 'AccidentMonth', COUNT(*) AS 'Count' FROM Accident GROUP BY AccidentMonth";
-	//$querySql14
-	//$querySql15
-	//$querySql16
-	//$querySql17
-	
-	
-	
+	//2010 monthly accident numbers
+	$querySql13 = "SELECT MONTH(AccidentDate) AS 'AccidentMonth', COUNT(*) AS 'Count' FROM Accident WHERE YEAR(AccidentDate) = 2010 GROUP BY AccidentMonth";
+	//2011 monthly accident numbers
+	$querySql14 = "SELECT MONTH(AccidentDate) AS 'AccidentMonth', COUNT(*) AS 'Count' FROM Accident WHERE YEAR(AccidentDate) = 2011 GROUP BY AccidentMonth";
+	//2012 monthly accident numbers
+	$querySql15 = "SELECT MONTH(AccidentDate) AS 'AccidentMonth', COUNT(*) AS 'Count' FROM Accident WHERE YEAR(AccidentDate) = 2012 GROUP BY AccidentMonth";
+	//2013 monthly accident numbers
+	$querySql16 = "SELECT MONTH(AccidentDate) AS 'AccidentMonth', COUNT(*) AS 'Count' FROM Accident WHERE YEAR(AccidentDate) = 2013 GROUP BY AccidentMonth";
+	//2014 monthly accident numbers
+	$querySql17 = "SELECT MONTH(AccidentDate) AS 'AccidentMonth', COUNT(*) AS 'Count' FROM Accident WHERE YEAR(AccidentDate) = 2014 GROUP BY AccidentMonth";
+
 	$result1 = mysqli_query($conn, $querySql1)
 	or die ("No information return...");
 	$result2 = mysqli_query($conn, $querySql2)
 	or die ("No information return...");
+	
 	$result3 = mysqli_query($conn, $querySql3)
 	or die ("No information return...");
 	$result4 = mysqli_query($conn, $querySql4)
@@ -55,6 +57,8 @@
 	or die ("No information return...");
 	$result6 = mysqli_query($conn, $querySql6)
 	or die ("No information return...");
+	
+	//Get the result from sql query for Seasons
 	$result7 = mysqli_query($conn, $querySql7)
 	or die ("No information return...");
 	$result8 = mysqli_query($conn, $querySql8)
@@ -66,6 +70,17 @@
 	$result11 = mysqli_query($conn, $querySql11)
 	or die ("No information return...");
 	$result12 = mysqli_query($conn, $querySql12)
+	or die ("No information return...");
+	
+	$result13 = mysqli_query($conn, $querySql13)
+	or die ("No information return...");
+	$result14 = mysqli_query($conn, $querySql14)
+	or die ("No information return...");
+	$result15 = mysqli_query($conn, $querySql15)
+	or die ("No information return...");
+	$result16 = mysqli_query($conn, $querySql16)
+	or die ("No information return...");
+	$result17 = mysqli_query($conn, $querySql17)
 	or die ("No information return...");
 	
 	$row1 = mysqli_fetch_array($result3);

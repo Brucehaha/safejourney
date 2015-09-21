@@ -27,6 +27,8 @@
 				fieldset { display: table-cell; }
 			}			
 	   </style>
+	   <!-- head style -->
+	   <?php include("includes/head.html"); ?>  
 	   
 	   <script type="text/javascript">
 			$(document).ready(function() {
@@ -37,50 +39,7 @@
   </head>
   
   <body>
-	<!-- This is the code for the top of window to place the navigation button -->
-    <div class="navbar navbar-default navbar-fix-top" id="topContainer">
-        <div class="container">
-			<div class="navbar-header"> 
-				<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand navbar-left" href="http://www.safejourneytowork.tk/">SafeJourney</a>  
- 			</div>
- 			
- 			<div class="collapse navbar-collapse">
- 			    <ul class="nav navbar-nav">	
- 			        <li><a href="http://www.safejourneytowork.tk/">Home</a></li>
-					<li class="dropdown">
-             			<a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                		Search
-                		<span class="caret"></span></a>
-              			<ul class="dropdown-menu" aria-labelledby="drop1">
-							<li><a href="search.php">By Fine</a></li>
-                			<li><a href="accidentreport.php">By Accident</a></li>
-               				<li role="separator" class="divider"></li>
-                			<li><a href="maps/index.php">On Map</a></li>	 
-              			</ul>
-           			</li>			         
- 			        <li id="feedback"><a href="feedback.php">Feedback</a></li>
- 			        <li id="about"><a href="aboutus.php">About Us</a></li>	
- 			    </ul>
-				
- 			    <form class="navbar-form navbar-right">
- 			       	<div class="form-group">
- 			       	   	<input type="email" placeholder="Email" class="form-control" />
- 			        </div>
-  			       	
-  			       	<div class="form-group">
-						<input type="password" placeholder="Password" class="form-control" />
- 			        </div>
- 			        
- 			        <button type="submit" class="btn" id="login">Log In</button>    
-				</form>  		        
- 			</div>
- 	    </div>
-    </div>
+	<?php include("includes/header.html"); ?>
     
 	<div class="container-fluid">
 		<div class="row">
@@ -96,12 +55,13 @@
 						<option value="weekday">Weekday</option>
 						<option value="speed">Speed Zone</option>
 					</select>
-					<select id="searchList2" name="searchList2">
+					<select id="searchList2" name="searchList2" style="width:150px;">
 						<option value="none" selected>Select seasons...</option>
 						<option value="season1">Season 1</option>
 						<option value="season2">Season 2</option>
 						<option value="season3">Season 3</option>
 						<option value="season4">Season 4</option>
+						<option value="compare">Monthly Comparison</option>
 					</select>
 					<input type="submit" id="select" class="btn" name="searchBtn" value="Search" />
 				</div>
@@ -153,6 +113,9 @@
 			}
 			else if ($("#searchList option:selected").val() == "year" && $("#searchList2 option:selected").val() == "season4") {
 				$("#resultpanel").load("chart5.php");
+			}
+			else if ($("#searchList option:selected").val() == "year" && $("#searchList2 option:selected").val() == "compare") {
+				$("#resultpanel").load("chart10.php");
 			}
 			//Show bar chart based on the selection of "Light Condition"
 			else if ($("#searchList option:selected").val() == "light") {
