@@ -3,25 +3,42 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<!-- Morris chart style -->
-		<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.5.1.css">
-		  <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-		<style>		    
-			<!-- Responsive tables firefox -->
-			@-moz-document url-prefix() {
-				fieldset { display: table-cell; }
-			}			
-	   </style>
-	   <!-- Head style -->
-	   <?php include("includes/head.html"); ?>  
+	<!-- Morris chart style -->
+	<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.5.1.css">
+	
+	<style>		    
+		<!-- Responsive tables firefox -->
+		@-moz-document url-prefix() {
+			fieldset { display: table-cell; }
+		}	
+		
+		.left_sidebar {
+			margin-top:30px;
+			background:#F2F2F2;
+		}
+		
+		.searchpanel {
+			margin-top:30px;
+		}
+		
+	</style>
+
+	<!-- Head style -->
+	<?php include("includes/head.html"); ?>  
 	   
-	   <script type="text/javascript">
-			$(document).ready(function() {
-				//Initially hide div with the paragraph which indicating the location of graphs
-				$("#searchList2").hide();
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//Initially hide div with the paragraph which indicating the location of graphs
+			$("#searchList2").hide();
+			
+			$(".alert").addClass("in").fadeOut(4500);
+			/* swap open/close side menu icons */
+			$('[data-toggle=collapse]').click(function(){
+				// toggle icon
+				$(this).find("i").toggleClass("glyphicon-chevron-right glyphicon-chevron-down");
 			});
-	   </script>
+		});
+	</script>
   </head>
   
   <body>
@@ -30,47 +47,53 @@
 
     <div class="container">
 		<div class="row">
-			<div class="col-md-2 left-side" >
-				<h4>Year</h4>
-				<ul style="list-style-type:none;">
-				  <li>2010</li>
-				  <li>2011</li>
-				  <li>2012</li>
-				  <li>2013</li>
-				  <li>2014</li>
+			<div class="col-md-3 left_sidebar">
+				<ul class="nav nav-stacked">
+					<li class="nav-header"><a href="#" data-toggle="collapse" data-target="#userMenu"> Year <i class="glyphicon glyphicon-chevron-down"></i></a>
+						<ul class="nav nav-stacked collapse in" id="userMenu">
+							<li><a href="#"><i class="glyphicon glyphicon-eye-open"></i> 2010</a></li>
+							<li><a href="#"><i class="glyphicon glyphicon-eye-open"></i> 2011</a></li>
+							<li><a href="#"><i class="glyphicon glyphicon-eye-open"></i> 2012</a></li>
+							<li><a href="#"><i class="glyphicon glyphicon-eye-open"></i> 2013</a></li>
+							<li><a href="#"><i class="glyphicon glyphicon-eye-open"></i> 2014</a></li>
+						</ul>
+					</li>
+	 
+					<li class="nav-header">
+						<a href="#" data-toggle="collapse" data-target="#menu3"> Comparison <i class="glyphicon glyphicon-chevron-right"></i></a>
+						<ul class="nav nav-stacked collapse" id="menu3">
+							<li><a href=""><i class="glyphicon glyphicon-eye-open"></i> Monthly</a></li>
+							<li><a href=""><i class="glyphicon glyphicon-eye-open"></i> Weekly</a></li>
+							<li><a href=""><i class="glyphicon glyphicon-eye-open"></i> Daily</a></li>
+						</ul>
+					</li>
 				</ul>
+			</div> <!--end of col-md-3 -->
+			<div class="col-md-9 searchpanel">
+				<h4>Dashboard <i class="glyphicon glyphicon-search"></i></h4>
 				<hr>
-				<h4>Comparison</h4>
-				<ul style="list-style-type:none;">
-				<li><input type="submit" id="monthly" class="btn" name="monthlyBtn" value="Monthly" style="width:80px;height:40px;" disabled /></li><br />
-				<li><input type="submit" id="daily" class="btn" name="dailyBtn" value="Daily" style="width:80px;height:40px;" disabled /></li><br />
-				<li><input type="submit" id="time" class="btn" name="timeBtn" value="Time" style="width:80px;height:40px;" disabled /></li><br />
-			</div>
-			<div class="col-md-10 right-side">
-				<div style="text-align:center;">
-					<p style="font-size:160%;color:grey;margin:30px 10px;">In recent years, an increasing number of accidents happened on the road for daily frequent commuters. The safety is always the most important issue all the world wide.</p> 
-					<!-- Dropdown list for user selection to display the relevant chart -->
-					<div>
-						<label for="searchList">Search by</label>
-						<select id="searchList" name="searchList" style="width:150px;">
-							<option selected>Choose One...</option>
-							<option value="year">Year</option>
-							<option value="weekday">Daily</option>
-							<option value="daytime">24 Hours</option>
-							<option value="light">Light Condition</option>
-							<option value="speed">Speed Zone</option>
-						</select>
-						<select id="searchList2" name="searchList2" style="width:150px;">
-							<option value="none" selected>Select option...</option>
-							<option value="q1">Quarter 1</option>
-							<option value="q2">Quarter 2</option>
-							<option value="q3">Quarter 3</option>
-							<option value="q4">Quarter 4</option>
-							<option value="compare">Monthly Comparison</option>
-						</select>
-						<input type="submit" id="select" class="btn" name="searchBtn" value="Search" />
-					</div>	
-				</div>
+				<!-- Dropdown list for user selection to display the relevant chart -->
+				<div class="searchinput">
+					<label for="searchList">Search by</label>
+					<select id="searchList" name="searchList" style="width:150px;">
+						<option selected>Choose One...</option>
+						<option value="year">Year</option>
+						<option value="weekday">Weekly</option>
+						<option value="daytime">Daily</option>
+						<option value="light">Light Condition</option>
+						<option value="speed">Speed Zone</option>
+					</select>
+					<select id="searchList2" name="searchList2" style="width:150px;">
+						<option value="none" selected>Select option...</option>
+						<option value="q1">Quarter 1</option>
+						<option value="q2">Quarter 2</option>
+						<option value="q3">Quarter 3</option>
+						<option value="q4">Quarter 4</option>
+						<option value="compare">Monthly Comparison</option>
+					</select>
+						
+					<input type="submit" id="select" class="btn" name="searchBtn" value="Search" />
+				</div>	
 					
 				<div style="text-align:center;">
 					<!-- Display the graph report here -->
@@ -78,9 +101,9 @@
 						<div id="resultpanel"></div>
 					</div>   
 				</div>
-			</div>	
-		</div>
-	</div>
+			</div>	<!--end of col-md-9 -->
+		</div> <!--end of row -->
+	</div> <!--end of container -->
 	
 	<!-- FOOTER -->
     <footer>
@@ -145,7 +168,7 @@
 		});
 
 	</script> 
-	
+	<!-- script references -->
 	<script src="js/bootstrap.min.js"></script>
   </body>
 </html>
