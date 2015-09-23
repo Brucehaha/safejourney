@@ -4,7 +4,7 @@
 			$strInputSuburb = "";
 			$strInputStreet = "";
 			
-			$strInputSuburb = $_POST["suburb"];
+			$strInputSuburb = $_POST["suburb_id"];
 			$strInputStreet = $_POST["street"];		
 	
 			//Check if the input box is empty or not

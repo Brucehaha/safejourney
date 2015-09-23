@@ -14,6 +14,22 @@
 	$( "#map" ).load( "fines/test.html");
 	</script>	
 	<script>
+       
+	    $(document).ready(function() {
+			$('#submit').click(function(e) {
+				e.preventDefault();
+				$.ajax({
+					type: 'POST',
+					url: 'searchphp.php',
+					data: {suburb_id: $('#suburb_id').val()},
+					success: function(data)
+					{
+						$("#tableContent").html(data);
+					}
+				});
+			});
+		});   
+
 		$(document).ready(function(){
 			$("#suburb_id").autocomplete("suburbautocomplete.php", {
 			selectFirst: true
@@ -146,15 +162,14 @@
                         </li> -->
                         
                        
-                       
+                    
 						<li>
 						    <div id="formPosition">
-							<form id="topRowSearch" name="search" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" >
-								<div class="inputStyle">
-									<input type="textbox" class="form-control" name="suburb" value="<?php echo $_POST["suburb"];?>" placeholder="Suburb" id="suburb_id" >
+							
+									<input type="textbox" class="form-control" name="suburb"  placeholder="Suburb" id="suburb_id" >
 								</div>
 								<div class="inputStyle">
-									<input type="text" class="form-control" name="street" value="<?php echo $_POST["street"];?>" placeholder="Street" id="street_id" />
+									<input type="text" class="form-control" name="street"placeholder="Street" id="street_id" />
 								</div>
 								<div class="inputStyle">
 									<input type="submit"class="btn" name="searchBtn" id='submit' value="Search" />
@@ -183,9 +198,9 @@
 						<div id="map">
 						
 						</div>
-						<div >
+						<div id="tableContent">
 						<!-- include the php file for handling the form validation and data -->
-							<? include("searchphp.php"); ?>
+							
 						</div>
 						
 						
