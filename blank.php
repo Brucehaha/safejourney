@@ -21,7 +21,10 @@
 				$.ajax({
 					type: 'POST',
 					url: 'searchphp.php',
-					data: {suburb_id: $('#suburb_id').val()},
+					data: {
+						suburb_id: $('#suburb_id').val(),
+						searchBtn: 'on'
+					},
 					success: function(data)
 					{
 						$("#tableContent").html(data);
@@ -55,14 +58,16 @@
     <!-- Custom Fonts -->
     <link href="css/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-	<!---->
+
 	<style>
+	    #tableContent {
+			
+			width:100%;
+			height:400px;
+			
+			
+			
+		}
 	    #map {
 				height: 400px;
 				width:100%;
@@ -165,23 +170,18 @@
                     
 						<li>
 						    <div id="formPosition">
-							
-									<input type="textbox" class="form-control" name="suburb"  placeholder="Suburb" id="suburb_id" >
-								</div>
-								<div class="inputStyle">
-									<input type="text" class="form-control" name="street"placeholder="Street" id="street_id" />
-								</div>
-								<div class="inputStyle">
-									<input type="submit"class="btn" name="searchBtn" id='submit' value="Search" />
-								</div>
-							</form>
+								<form >
+									<div class="form-group inputStyle ">
+										<input type="textbox" class="form-control" name="suburb"  placeholder="Suburb" id="suburb_id" >
+									</div>
+									
+									<div class="form-group inputStyle">
+										<input type="submit"class="btn" name="searchBtn" id='submit' value="Search" />
+									</div>
+						        </form>
 							</div>
 						</li>
-						<li>
-						<input id="address" type="textbox" value="Caulfield">
-
-				         <input id="submit1" type="button" value="Geocode">
-						<li>
+						
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -200,7 +200,7 @@
 						</div>
 						<div id="tableContent">
 						<!-- include the php file for handling the form validation and data -->
-							
+						
 						</div>
 						
 						
@@ -226,7 +226,7 @@
 		  });
 		  var infoWindow = new google.maps.InfoWindow;
 		  
-		  document.getElementById('submit1').addEventListener('click', function() {
+		  document.getElementById('submit').addEventListener('click', function() {
 			geocodeAddress(infoWindow, map);
 
 				   
@@ -239,7 +239,7 @@
 			downloadUrl("mapxml.php", function(data) {
 				var xml = data.responseXML;
 				var markers = xml.documentElement.getElementsByTagName("marker");
-				var address1 = document.getElementById('address').value;
+				var address1 = document.getElementById('suburb_id').value;
 				for (var i = 0; i < markers.length; i++) {
 				  
 				  var Suburb = markers[i].getAttribute("Suburb");
