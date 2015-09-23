@@ -11,16 +11,7 @@
 		@-moz-document url-prefix() {
 			fieldset { display: table-cell; }
 		}	
-		
-		.left_sidebar {
-			margin-top:30px;
-			background:#F2F2F2;
-		}
-		
-		.searchpanel {
-			margin-top:30px;
-		}
-		
+
 	</style>
 
 	<!-- Head style -->
