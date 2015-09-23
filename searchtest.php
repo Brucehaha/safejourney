@@ -10,11 +10,16 @@
 	<link rel="stylesheet" type="text/css" href="jquery.autocomplete.css" />
 	 <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    <script src="http://maps.google.com/maps/api/js?libraries=places,visualization&sensor=false"></script>
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
-		
+	
+	
+	
+	
 	<script>
+	
+	
 		$(document).ready(function(){
 			$("#suburb_id").autocomplete("suburbautocomplete.php", {
 			selectFirst: true
@@ -26,9 +31,35 @@
 			selectFirst: true
 			});
 		});
+		//load map
+		$( "#map" ).load( "fines/test.html #map");
 	</script>
-		
+	<script>
+	function initMap() {
+
+		  var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 8,
+			center: {lat: -37.8602828, lng: 145.079616}
+		  });
+		  var infoWindow = new google.maps.InfoWindow;
+		  
+		  document.getElementById('submit').addEventListener('click', function() {
+			geocodeAddress(infoWindow, map);
+
+				   
+		  });
+
+		}
+	
+	</script>
 		<style>
+		
+		    #map {
+				height: 400px;
+				width:100%;
+				
+				
+			  }
 			<!-- Responsive tables firefox -->
 			@-moz-document url-prefix() {
 				fieldset { display: table-cell; }
@@ -36,7 +67,7 @@
 	   </style>
   </head>
   
-  <body>
+  <body onload="initMap()">
 	<!--Navigation bar and style-->
     <?php include("includes/header.html"); ?>
 	 <div id="wrapper">
@@ -60,7 +91,7 @@
 							<input type="text" class="form-control" name="street" value="<?php echo $_POST["street"];?>" placeholder="Street" id="street_id" />
 					    </div>
 						<div class="inputStyle">
-							<input type="submit"class="btn" name="searchBtn" value="Search" />
+							<input type="submit"class="btn" name="searchBtn" id='submit' value="Search" />
 					    </div>
 					</form>
 		        </li>
@@ -72,14 +103,15 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
-                        
+                    <div class="col-md-12">
+                            <div id="map">
+							</div>
 						
-						 <div class="container" id="midContainerSearch">
-					
+						
+					        <div>
 							<!-- include the php file for handling the form validation and data -->
 							<? include("searchphp.php"); ?>
-						</div>	
+							</div>
 						
 						
 						
@@ -90,7 +122,6 @@
         <!-- /#page-content-wrapper -->
 
     </div>
-    <!-- /#wrapper -->
     
    
     
