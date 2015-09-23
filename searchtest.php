@@ -46,35 +46,29 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                        Start Bootstrap
+                        Search by Suburb or Street 	:
                     </a>
                 </li>
+               
                 <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
+			
+					<form id="topRowSearch" name="search" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" >
+					    <div class="inputStyle">
+							<input type="text" class="form-control" name="suburb" value="<?php echo $_POST["suburb"];?>" placeholder="Suburb" id="suburb_id" >
+				        </div>
+						<div class="inputStyle">
+							<input type="text" class="form-control" name="street" value="<?php echo $_POST["street"];?>" placeholder="Street" id="street_id" />
+					    </div>
+						<div class="inputStyle">
+							<input type="submit"class="btn" name="searchBtn" value="Search" />
+					    </div>
+					</form>
+		        </li>
+		</ul>	
         </div>
         <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
+        <!-- Page Content 22-->
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
@@ -82,23 +76,7 @@
                         
 						
 						 <div class="container" id="midContainerSearch">
-							<div class="row">
-								<h3 align="center">Search the infringement fine for intersection in Melbourne by entering suburb and street.</h3>
-							   <!-- offset-3 make the 3 column to the right,move col6 to middle -->    
-								<form id="topRowSearch" name="search" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" >
-									<div class="col-md-3 col-md-offset-2" id="suburbdiv">
-										<input type="text" class="form-control" name="suburb" value="<?php echo $_POST["suburb"];?>" placeholder="Suburb" id="suburb_id" >
-									</div>
-									
-									<div class="col-md-3" id="streetdiv">
-										<input type="text" class="form-control" name="street" value="<?php echo $_POST["street"];?>" placeholder="Street" id="street_id" />
-									</div>
-									
-									<div class="col-md-1" id="btnPosition">
-										<input type="submit"class="btn" name="searchBtn" value="Search" />
-									</div>
-								</form>
-							</div>
+					
 							<!-- include the php file for handling the form validation and data -->
 							<? include("searchphp.php"); ?>
 						</div>	
