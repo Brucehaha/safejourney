@@ -133,44 +133,16 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <!-- <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                            /input-group
-                        </li>
-                        <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">blank</a>
-                                </li>
-                                <li>
-                                    <a href="#">Morris.js Charts</a>
-                                </li>
-                            </ul>
-                            /.nav-second-level
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-table fa-fw"></i> Tables</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li> -->
-                        
                        
-                    
+						   
+						
 						<li>
+						    
 						    <div id="formPosition">
-								<form >
+							  
+							    <div id="error">
+						        </div>
+								<form>
 									<div class="form-group inputStyle ">
 										<input type="textbox" class="form-control" name="suburb"  placeholder="Suburb" id="suburb_id" >
 									</div>
@@ -235,36 +207,55 @@
 		}
 
 		function geocodeAddress(infoWindow, resultsMap) {
-		 
+		    var error;
 			downloadUrl("mapxml.php", function(data) {
 				var xml = data.responseXML;
 				var markers = xml.documentElement.getElementsByTagName("marker");
 				var address1 = document.getElementById('suburb_id').value;
-				for (var i = 0; i < markers.length; i++) {
-				  
-				  var Suburb = markers[i].getAttribute("Suburb");
-				  
-				  if(Suburb.indexOf(address1) > -1){
+				
+				if(address1.replace(/\s/g,"") == ""){
 					
+					error = "<div class='alert alert-danger'>Please enter a valid address</div>";
+				
+				};
+				if(error){
+				
+				   $("#error").html(error); 
+				
+				} else {
+				    
+					error = "";
+				   $("#error").html(error);
+					for (var i = 0; i < markers.length; i++) {
+					  
+					  var Suburb = markers[i].getAttribute("Suburb");
+					  
+					  if(Suburb.trim().toUpperCase().indexOf(address1.trim().toUpperCase()) !== -1){
+			
+						  var InfringementID = markers[i].getAttribute("InfringementID");
+						  var Street1 = markers[i].getAttribute("Street1");
+						  var Street2 = markers[i].getAttribute("Street2");
+						  var no = markers[i].getAttribute("NoOfInfringement");
+						  var Fines = markers[i].getAttribute("Fines");
+						  var formatFine = Fines.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+						  var address = Street1+" "+"and"+" "+Street2;	  
+						  var html = '<b>' + address + '</b> <br/>' +'No. of Infringment: '+ no+'</b> <br/>' +'Total Fines: '+ formatFine;
+						  console.log(address);
+						  createMarker(address, html, resultsMap, infoWindow);		  
+						  
+					  }else
+					  {
+						 error = "<div class='alert alert-danger'>Please enter a valid address</div>"; 
+						 $("#error").html(error);
+						  
+						  
+					  };
+
 					 
-					  
-					  var InfringementID = markers[i].getAttribute("InfringementID");
-					  var Street1 = markers[i].getAttribute("Street1");
-					  var Street2 = markers[i].getAttribute("Street2");
-					  var no = markers[i].getAttribute("NoOfInfringement");
-					  var Fines = markers[i].getAttribute("Fines");
-					  var formatFine = Fines.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
-					  var address = Street1+" "+"and"+" "+Street2;	  
-					  var html = '<b>' + address + '</b> <br/>' +'No. of Infringment: '+ no+'</b> <br/>' +'Total Fines: '+ formatFine;
-				      console.log(address);
-					 createMarker(address, html, resultsMap, infoWindow)		  
-					  
-				  } else {
-					 console.log("not martch");
-				  };
-				 
-				}
-			  });
+					 
+					};
+				};
+			});
 		 
 		}
 
