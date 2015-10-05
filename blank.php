@@ -14,7 +14,7 @@
 	$( "#map" ).load( "fines/test.html");
 	</script>	
 	<script>
-       
+       //send input value to database
 	    $(document).ready(function() {
 			$('#submit').click(function(e) {
 				e.preventDefault();
@@ -35,13 +35,13 @@
 
 		$(document).ready(function(){
 			$("#suburb_id").autocomplete("suburbautocomplete.php", {
-			selectFirst: true
+			selectFirst: false
 			});
 		});
 			
 		$(document).ready(function(){				
 			$("#street_id").autocomplete("streetautocomplete.php", {
-			selectFirst: true
+			selectFirst: false
 			});
 		});
 	</script>
@@ -64,8 +64,6 @@
 			
 			width:100%;
 			height:400px;
-			
-			
 			
 		}
 	    #map {
@@ -95,10 +93,10 @@
 <body onload="initMap()">
 
     <div id="wrapper">
-
+		<?php include("includes/header.html"); ?>
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header"> 
+       <!-- <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">-->
+        <!--   <div class="navbar-header"> 
 				<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -107,7 +105,7 @@
 				<a class="navbar-brand navbar-left" href="http://www.safejourneytowork.tk"><span>SafeJourney</span></a>  
 			</div>
             <!-- /.navbar-header -->
-
+<!--
             <ul class="nav navbar-top-links navbar-right">
                 <li id="about"><a href="http://www.safejourneytowork.tk">Home</a></li>
 				<li class="dropdown">
@@ -159,7 +157,7 @@
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->
-        </nav>
+    <!--    </nav>-->
 
         <!-- Page Content -->
         <div id="page-wrapper">
@@ -208,30 +206,25 @@
 
 		function geocodeAddress(infoWindow, resultsMap) {
 		    var error;
+			var suburbs = [];
 			downloadUrl("mapxml.php", function(data) {
 				var xml = data.responseXML;
 				var markers = xml.documentElement.getElementsByTagName("marker");
 				var address1 = document.getElementById('suburb_id').value;
 				
-				if(address1.replace(/\s/g,"") == ""){
-					
+				if(address1.replace(/\s/g,"") == ""){					
 					error = "<div class='alert alert-danger'>Please enter a valid address</div>";
-				
-				};
-				if(error){
-				
-				   $("#error").html(error); 
-				
-				} else {
-				    
+					$("#error").html(error);
+				}else {				    
 					error = "";
-				   $("#error").html(error);
+					$("#error").html(null);
+					
 					for (var i = 0; i < markers.length; i++) {
 					  
 					  var Suburb = markers[i].getAttribute("Suburb");
 					  
 					  if(Suburb.trim().toUpperCase().indexOf(address1.trim().toUpperCase()) !== -1){
-			
+			              suburbs.push(Suburb);
 						  var InfringementID = markers[i].getAttribute("InfringementID");
 						  var Street1 = markers[i].getAttribute("Street1");
 						  var Street2 = markers[i].getAttribute("Street2");
@@ -243,20 +236,18 @@
 						  console.log(address);
 						  createMarker(address, html, resultsMap, infoWindow);		  
 						  
-					  }else
-					  {
-						 error = "<div class='alert alert-danger'>Please enter a valid address</div>"; 
-						 $("#error").html(error);
-						  
-						  
-					  };
-
-					 
-					 
-					};
-				};
+					  } 
+					}
+					
+					if(suburbs.length == 0){
+						error = "<div class='alert alert-danger'>Information not available</div>";						
+						$("#error").html(error);					
+					} else{					
+						error="";
+						$("#error").html(error);					
+					}
+				}
 			});
-		 
 		}
 
 		function createMarker(address, html, resultsMap, infoWindow){

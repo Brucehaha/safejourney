@@ -21,13 +21,6 @@
 		$(document).ready(function() {
 			//Initially hide div with the paragraph which indicating the location of graphs
 			$("#searchList2").hide();
-			
-			$(".alert").addClass("in").fadeOut(4500);
-			/* swap open/close side menu icons */
-			$('[data-toggle=collapse]').click(function(){
-				// toggle icon
-				$(this).find("i").toggleClass("glyphicon-chevron-right glyphicon-chevron-down");
-			});
 		});
 	</script>
   </head>
@@ -37,36 +30,15 @@
 	<?php include("includes/header.html"); ?>
 
     <div class="container">
-		<div class="row">
-			<div class="col-md-3 left_sidebar">
-				<ul class="nav nav-stacked">
-					<li class="nav-header"><a href="#" data-toggle="collapse" data-target="#userMenu"> Year <i class="glyphicon glyphicon-chevron-down"></i></a>
-						<ul class="nav nav-stacked collapse in" id="userMenu">
-							<li><a href="#"><i class="glyphicon glyphicon-eye-open"></i> 2010</a></li>
-							<li><a href="#"><i class="glyphicon glyphicon-eye-open"></i> 2011</a></li>
-							<li><a href="#"><i class="glyphicon glyphicon-eye-open"></i> 2012</a></li>
-							<li><a href="#"><i class="glyphicon glyphicon-eye-open"></i> 2013</a></li>
-							<li><a href="#"><i class="glyphicon glyphicon-eye-open"></i> 2014</a></li>
-						</ul>
-					</li>
-	 
-					<li class="nav-header">
-						<a href="#" data-toggle="collapse" data-target="#menu3"> Comparison <i class="glyphicon glyphicon-chevron-right"></i></a>
-						<ul class="nav nav-stacked collapse" id="menu3">
-							<li><a href=""><i class="glyphicon glyphicon-eye-open"></i> Monthly</a></li>
-							<li><a href=""><i class="glyphicon glyphicon-eye-open"></i> Weekly</a></li>
-							<li><a href=""><i class="glyphicon glyphicon-eye-open"></i> Daily</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div> <!--end of col-md-3 -->
-			<div class="col-md-9 searchpanel">
-				<h4>Dashboard <i class="glyphicon glyphicon-search"></i></h4>
+		<div class="row">			
+			<div class="col-md-12 searchpanel">				
+				<p style="font-size:130%;color:grey;margin-top:10px;margin-bottom:10px;">In recent years, an increasing number of accidents happened on the road for daily frequent commuters. The safety is always the most important issue all the world wide. We provide the data report for last five years from 2010 to 2014.</p>
 				<hr>
+				<h3>Dashboard <i class="glyphicon glyphicon-search"></i></h3>
 				<!-- Dropdown list for user selection to display the relevant chart -->
 				<div class="searchinput">
 					<label for="searchList">Search by</label>
-					<select id="searchList" name="searchList" style="width:150px;">
+					<select id="searchList" name="searchList" style="width:160px;">
 						<option selected>Choose One...</option>
 						<option value="year">Year</option>
 						<option value="weekday">Weekly</option>
@@ -74,7 +46,7 @@
 						<option value="light">Light Condition</option>
 						<option value="speed">Speed Zone</option>
 					</select>
-					<select id="searchList2" name="searchList2" style="width:150px;">
+					<select id="searchList2" name="searchList2" style="width:160px;">
 						<option value="none" selected>Select option...</option>
 						<option value="q1">Quarter 1</option>
 						<option value="q2">Quarter 2</option>
@@ -88,7 +60,7 @@
 					
 				<div style="text-align:center;">
 					<!-- Display the graph report here -->
-					<div style="text-align:center;"> 					
+					<div class="col-md-8 col-md-offset-2" style="text-align:center;"> 					
 						<div id="resultpanel"></div>
 					</div>   
 				</div>

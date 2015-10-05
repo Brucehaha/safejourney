@@ -29,8 +29,9 @@
 		if ($error) {	
 			$result='<strong>There were error(s) in your form:</strong>'.$error.'';
 		} else {
-			if (mail("safejourneytowork91@gmail.com", "Comment from website!", "Name: ".$_POST['name'].'<br />'."Email: ".$_POST['email'].'<br />'."Comment: ".$_POST['comment'])) {
-				$result='<div class="alert alert-success"><strong>Thank you!</strong> I\'ll be in touch.</div>';
+			if (mail("safejourneytowork91@gmail.com", "<html><body>Comment from website!", "Name: ".$_POST['name'].'<br />'."Email: ".$_POST['email'].'<br />'."Comment: ".$_POST['comment']."</body></html>")) {
+				mail($_POST['email'], "You\'ll be in touch.");
+				$result='<div class="alert alert-success"><strong>Thank you!</strong> You\'ll be in touch.</div>';
 			} else {
 				$result='<div class="alert alert-danger">Sorry, there was an error sending your message. Please try again later.</div>';
 			}
