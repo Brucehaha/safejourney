@@ -2,22 +2,21 @@
 	//Check the form if submit by post
 		if (isset($_POST["searchBtn"])) {
 			$strInputSuburb = "";
-			$strInputStreet = "";
+			// $strInputStreet = "";
 			
-			$strInputSuburb = $_POST["suburb_id"];
-			$strInputStreet = $_POST["street"];		
+			$strInputSuburb = $_POST["suburb_id"];		
 	
 			//Check if the input box is empty or not
 			//if BOTH "Suburb" AND "Street" is empty, it will display the error message.
-			if(!empty($strInputSuburb) || !empty($strInputStreet))
+			if(!empty($strInputSuburb))
 			{
 				//Connect to database server and table
                 include("connection.php");
-				@mysqli_select_db($conn, "cl57-henningdb")
+				@mysqli_select_db($conn, "cl57-masterdb")
 				or die ("Database not available");
 				
-				$querySql1 = "select * from Infringement 
-							  where suburb like '%".mysqli_real_escape_string($conn, $strInputSuburb)."%' and Street1 like '%".mysqli_real_escape_string($conn, $strInputStreet)."%'
+				$querySql1 = "select Street1, Street2, Suburb, SUM(NoOfInfringement) AS 'NoOfInfringement', SUM(Fines) AS 'Fines' from Infringement 
+							  where suburb like '%".mysqli_real_escape_string($conn, $strInputSuburb)."%' group by Suburb, Street1, Street2
              				  order by Suburb, Fines DESC";
 				
 				$result1 = mysqli_query($conn, $querySql1)
@@ -41,7 +40,6 @@
 				}
 				else {
 					echo " ";
-
 				} 
 				
 				//Release the SQL clause
@@ -51,7 +49,6 @@
 			}
 			else {
 				echo " ";
-
 			}
 		}	
 	?> 	       

@@ -13,8 +13,9 @@ body {
     left:-10px;	
 	}	
 .navbar-brand span{	
-	font-size:1.2em;	
 	margin-left:18px;
+	position:relative;
+	bottom:10px;
 	}
 .navbar-nav{	
 	font-size: 14px;

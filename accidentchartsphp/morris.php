@@ -2,7 +2,7 @@
 	
 	//Connect to database server and table
     include("../connection.php");
-	@mysqli_select_db($conn, "cl57-henningdb")
+	@mysqli_select_db($conn, "cl57-masterdb")
 	or die ("Database not available");
 	
 	//Count the number of accidents happened for last five years

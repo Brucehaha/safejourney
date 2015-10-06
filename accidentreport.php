@@ -39,7 +39,7 @@
 				<div class="searchinput">
 					<label for="searchList">Search by</label>
 					<select id="searchList" name="searchList" style="width:160px;">
-						<option selected>Choose One...</option>
+						<option value="" disabled selected style="display:none;">Select your option...</option>
 						<option value="year">Year</option>
 						<option value="weekday">Weekly</option>
 						<option value="daytime">Daily</option>
@@ -47,7 +47,7 @@
 						<option value="speed">Speed Zone</option>
 					</select>
 					<select id="searchList2" name="searchList2" style="width:160px;">
-						<option value="none" selected>Select option...</option>
+						<option value="" disabled selected style="display:none;">Select your option...</option>
 						<option value="q1">Quarter 1</option>
 						<option value="q2">Quarter 2</option>
 						<option value="q3">Quarter 3</option>
@@ -61,7 +61,7 @@
 				<div style="text-align:center;">
 					<!-- Display the graph report here -->
 					<div class="col-md-8 col-md-offset-2" style="text-align:center;"> 					
-						<div id="resultpanel"></div>
+						<div id="resultpanel" style="height:500px;"></div>
 					</div>   
 				</div>
 			</div>	<!--end of col-md-9 -->
@@ -70,7 +70,10 @@
 	
 	<!-- FOOTER -->
     <footer>
-		<p class="pull-right" style="margin-top:50px;margin-right:70px;"><a href="#">Back to top</a></p>
+		<div style="margin:0 20px;">
+			<p class="pull-right"><a href="#">Back to top</a></p>
+			<p class="pull-left">&copy; 2015 MasterMinds, Inc.</p>
+		</div>
     </footer>
 	
 	<!-- Bootstrap -->
@@ -90,7 +93,7 @@
 		//event handler after "Search" button click
 		$("#select").click(function () {
 			//Show line chart based on the selection of "Year"
-			if ($("#searchList option:selected").val() == "year" && $("#searchList2 option:selected").val() == "none"){
+			if ($("#searchList option:selected").val() == "year" && $("#searchList2 option:selected").val() == ""){
 				$("#resultpanel").load("accidentchartsphp/chart1.php");	
 			} 
 			else if ($("#searchList option:selected").val() == "year" && $("#searchList2 option:selected").val() == "q1") {

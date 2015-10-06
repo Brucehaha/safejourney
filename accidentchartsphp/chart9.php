@@ -17,19 +17,41 @@
 						data: [	
 							<?php 	
 								while($row9 = mysqli_fetch_array($result12)) {    
-									$speedzone = $row9[0];
-									$count9 = $row9[1];
-									$myurl9[] = "{y: '".$speedzone."', a: ".$count9."},";
+									$myurl9[] = $row9[1];
 								}       
-								$info9 = implode("",$myurl9);
-								echo $info9;
 							?>
+							// {y: '<?php echo $myurl9[2];?>', a: '30 km/h'},
+							// {y: '<?php echo $myurl9[3];?>', a: '40 km/h'},
+							// {y: '<?php echo $myurl9[4];?>', a: '50 km/h'},
+							// {y: '<?php echo $myurl9[5];?>', a: '60 km/h'},
+							// {y: '<?php echo $myurl9[6];?>', a: '70 km/h'},
+							// {y: '<?php echo $myurl9[7];?>', a: '75 km/h'},
+							// {y: '<?php echo $myurl9[8];?>', a: '80 km/h'},
+							// {y: '<?php echo $myurl9[9];?>', a: '90 km/h'},
+							// {y: '<?php echo $myurl9[0];?>', a: '100 km/h'},
+							// {y: '<?php echo $myurl9[1];?>', a: '110 km/h'},
+							// {y: '<?php echo $myurl9[10];?>', a: 'Camping grounds/Off road'},
+							// {y: '<?php echo $myurl9[11];?>', a: 'Unknown'},
+							// {y: '<?php echo $myurl9[12];?>', a: 'Other speed limit'}
+							
+							{y: '30 km/h', a: '<?php echo $myurl9[2];?>'},
+							{y: '40 km/h', a: '<?php echo $myurl9[3];?>'},
+							{y: '50 km/h', a: '<?php echo $myurl9[4];?>'},
+							{y: '60 km/h', a: '<?php echo $myurl9[5];?>'},
+							{y: '70 km/h', a: '<?php echo $myurl9[6];?>'},
+							{y: '75 km/h', a: '<?php echo $myurl9[7];?>'},
+							{y: '80 km/h', a: '<?php echo $myurl9[8];?>'},
+							{y: '90 km/h', a: '<?php echo $myurl9[9];?>'},
+							{y: '100 km/h', a: '<?php echo $myurl9[0];?>'},
+							{y: '110 km/h', a: '<?php echo $myurl9[1];?>'},
+							{y: 'Other speed limit', a: '<?php echo $myurl9[12];?>'}
 						],
 						xkey: 'y',
 						ykeys: ['a'],
 						labels: ['Accidents'],
-						xLabelAngle: 40,
-						padding: 70,
+						xLabelAngle: 25,
+						padding: 40,
+						margin: 90,
 						resize: true
 					});		
 				});
