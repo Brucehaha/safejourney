@@ -17,19 +17,23 @@
 						data: [	
 							<?php  
 								while($row6 = mysqli_fetch_array($result2)) {    
-									$condition = $row6[0];
-									$count6 = $row6[1];
-									$myurl6[] = "{y: '".$condition."', a: ".$count6."},";
+									$myurl6[] = $row6[1];
 								}
-								$info6 = implode("",$myurl6);
-								echo $info6;
 							?>
+							{y: 'No street lights', a: '<?php echo $myurl6[0];?>'},
+							{y: 'Street lights off', a: '<?php echo $myurl6[1];?>'},
+							{y: 'Street lights on', a: '<?php echo $myurl6[2];?>'},
+							{y: 'Unknown street lights', a: '<?php echo $myurl6[3];?>'},
+							{y: 'Day', a: '<?php echo $myurl6[4];?>'},
+							{y: 'Dust/Dawn', a: '<?php echo $myurl6[5];?>'},
+							{y: 'Unknown', a: '<?php echo $myurl6[6];?>'}
+	
 						],
 						xkey: 'y',
 						ykeys: ['a'],
 						labels: ['Accidents'],
-						xLabelAngle: 20,
-						padding: 60,
+						xLabelAngle: 18,
+						padding: 40,
 						resize: true
 					});	
 				});

@@ -6,7 +6,7 @@
 	
 	//Connect to database server and table
     include("connection.php");
-	@mysqli_select_db($conn, "cl57-henningdb") 
+	@mysqli_select_db($conn, "cl57-masterdb") 
 	or die("No information return");
 	
 	//$sql = "SELECT SuburbName FROM Suburb WHERE lower(SuburbName) LIKE '%$my_data%' LIMIT 0, 10";

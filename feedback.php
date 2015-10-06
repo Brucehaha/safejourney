@@ -40,7 +40,15 @@
 				</form>
 			</div>
 		</div>
+		<!-- FOOTER -->
+		<footer>
+			<div style="margin-top:120px;margin-left:20px;margin-right:20px;">
+				<p class="pull-right"><a href="#">Back to top</a></p>
+				<p class="pull-left">&copy; 2015 MasterMinds, Inc.</p>
+			</div>
+		</footer>
 	</div>
+	
 	<!-- Bootstrap -->
 	<script src="js/bootstrap.min.js"></script>
 
