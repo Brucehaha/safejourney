@@ -28,6 +28,77 @@ body {
 	display: block;
 	}
 
+/* Home Page */
+/* MARKETING CONTENT */
+
+/* Center align the text within the three columns below the carousel */
+.marketing {
+	margin-top:-40px;
+	}
+	
+.marketing .col-lg-4 {
+	margin-top:10px;
+	text-align: center;
+	}
+.marketing h2 {
+	font-weight: normal;
+	}
+.marketing .col-lg-4 p {
+	margin-right: 10px;
+	margin-left: 10px;
+	}
+.marketing .functionicon h2{
+	font-size:1.4em;
+	}
+
+/* Featurettes */
+.featurette-divider {
+	margin: 20px 0;  /* Space out the Bootstrap <hr> more */
+	}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+	font-weight: 300;
+	line-height: 1;
+	letter-spacing: -1px;
+	font-size: 45px;
+	}
+	
+/* RESPONSIVE CSS */
+
+@media (min-width: 768px) {
+	/* Navbar positioning foo */
+	.navbar-wrapper {
+		margin-top: 20px;
+		}
+	.navbar-wrapper .container {
+		padding-right: 15px;
+		padding-left: 15px;
+		}
+	.navbar-wrapper .navbar {
+		padding-right: 0;
+		padding-left: 0;
+		}
+
+	/* The navbar becomes detached from the top, so we round the corners */
+	.navbar-wrapper .navbar {
+		border-radius: 4px;
+		}
+
+	/* Bump up size of carousel content */
+	.carousel-caption p {
+		margin-bottom: 20px;
+		font-size: 21px;
+		line-height: 1.4;
+		}
+	}
+
+@media (min-width: 992px) {
+	.featurette-heading {
+		margin-top: 120px;
+		}
+	}
+		
 #words {
     font-size:0.9em;
     position:relative;
@@ -37,15 +108,6 @@ body {
 #topContainer{
     padding:0;
     margin:0;
-	}
-       
-#midContainer {
-    background-image:url("images/bg3.jpg");
-    height:1000px;
-    width:100%;
-    background-size:cover;
-    margin:0;
-    padding:0;
 	}
 	
 .contentContainer {
@@ -60,8 +122,7 @@ body {
 #topRow h1{
     font-size:300%;
     }
-
-       
+      
 .transparent {
     opacity:0.5;
     position:relative;
@@ -94,10 +155,6 @@ strong {
     padding:0;
     margin:0;
     height:100px;
-	}
-
-.marginTop {
-   
 	}
 
 .marginBottom {
@@ -176,11 +233,6 @@ a:link {
 	}
 
 .aboutcontainer {
-	margin-top:70px;
-    text-align:center;
-	}
-
-.aboutcontainer2 {
 	margin-top:50px;
     text-align:center;
 	}
@@ -188,32 +240,7 @@ a:link {
 .aboutimage {
 	margin-bottom:50px;
 	}
-/*	
-.aboutcontainer3 {
-	margin-top:50px;
-    text-align:center;
-	}
-	
-#midContainerAbout {
-    background-image:
-		linear-gradient(
-		  rgba(255, 255, 255, .5),
-		  rgba(0, 0, 0, .5)
-		),
-		url("images/bgAbout.jpg");
-	background-size:cover;
-    height:1000px;
-    width:100%;
-    margin:0;
-    padding:0;	
-	}
-	
-#topRowAbout{
-	margin:180px 20px;
-    text-align:center; 
-	position:relative;
-	}
-*/	
+
 .slogan{
 	font-style: italic;
 	color: #B6B6B6;
@@ -266,20 +293,12 @@ a.linkDetails:hover {
 		),
 		url("images/feedback.jpg");
 	background-size:cover;
-    height:1000px;
-    width:100%;
+    height:590px;
+	width:100%;
     margin:0;
     padding:0;
 	}
-	
-#midContainer {
-    height:100%;
-    width:100%;
-    background-size:cover;
-    margin:0;
-    padding:0;       
-    }
-         
+	  
 #topRowSearch{
     margin-top:20px;
     text-align:center;   
@@ -421,7 +440,7 @@ form {
 	}
 
 .container1 .wraper {
-	display:none;
+	
 	padding:15px;	
 	}
 		
@@ -465,8 +484,5 @@ i {
 	-o-border-radius: 10px;
 	border-radius: 10px;
 	}
-
-
-
 
        

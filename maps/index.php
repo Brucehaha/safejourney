@@ -22,8 +22,38 @@
 	<script type="text/javascript">
 	// OnLoad function ...
 	var directions = [];	
-	function initialize() {		
-		// Create a new map with some default settings
+	function initialize() {
+	    var styles = [
+		    {
+		      stylers: [
+		        { hue: "#00ffe6" },
+		        { saturation: -20 }
+		      ]
+		    },{
+		      featureType: "road",
+		      elementType: "geometry",
+		      stylers: [
+		        { lightness: 100 },
+		        { visibility: "simplified" }
+		      ]
+		    },{
+		      featureType: "road",
+		      elementType: "labels",
+		      stylers: [
+		        { visibility: "off" }
+		      ]
+		    }
+		  ];
+
+		 // Create a new StyledMapType object, passing it the array of styles,
+		 // as well as the name to be displayed on the map type control.
+		 var styledMap = new google.maps.StyledMapType(styles,
+			 {name: "Styled Map"});
+
+		
+		// Create a map object, and include the MapTypeId to add
+        // to the map type control.
+
 		var myLatlng = new google.maps.LatLng(-37.8602828,145.079616);
 		var myOptions = {
 			zoom:8,
@@ -31,16 +61,22 @@
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			mapTypeControl:true,
 			mapTypeControlOptions: {
-				style: google.maps.MapTypeControlStyle.DEFAULT,
-				mapTypeIds: [
-					google.maps.MapTypeId.ROADMAP,
-					google.maps.MapTypeId.TERRAIN,
-					google.maps.MapTypeId.SATELLITE
-				],
-				position: google.maps.ControlPosition.RIGHT_TOP
-			}
-		}
+			
+				mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style'],
+
+				
+			},
+		   zoomControl: true,
+   		   zoomControlOptions: {
+        	  position: google.maps.ControlPosition.LEFT_Top
+     		}
+
+		};
 		var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        //Associate the styled map with the MapTypeId and set it to display.
+		map.mapTypes.set('map_style', styledMap);
+        map.setMapTypeId('map_style');
+
 		
 		 //click function call calculateAndDisplayRoute to ge the alternative routes
 		var directionsService = new google.maps.DirectionsService;
@@ -178,7 +214,7 @@
 	<div id="map_canvas"></div>
 	<div class="container1">
 		<div id="accordion" >
-			<div class="header1"><span>Click to navigate your safe journey<i class="fa fa-align-justify"></i></span></span></div>
+			<div class="header1"><span>Click To Collapse<i class="fa fa-align-justify"></i></span></span></div>
 			<div class="wraper">
 				<form>
 					<div class="form-group">						

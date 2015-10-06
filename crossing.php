@@ -151,9 +151,10 @@
 						markerdata[i].setMap(null);
 					
 					}
-				}
+				}	
 				markerdata = [];
-			    //set new markerss
+			    //set new markers
+			    map.setZoom(12);
 				geocodeAddress(infoWindow, map);	   
 		  });
 		}
@@ -184,7 +185,7 @@
 							var no = markers[i].getAttribute("NoOfInfringement");
 							var Fines = markers[i].getAttribute("Fines");
 							var formatFine = Fines.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
-							var address = Street1+" "+"and"+" "+Street2;	  
+							var address = Street1+" "+"and"+" "+Street2+" "+"Melbourne";	  
 							var html = '<b>' + address + '</b> <br/>' +'No. of Infringment: '+ no+'</b> <br/>' +'Total Fines: '+ formatFine;
 							
 							createMarker(address, html, resultsMap, infoWindow);		  
@@ -201,7 +202,7 @@
 				}
 			});
 		}
-
+           //set markers to the map
 		function createMarker(address, html, resultsMap, infoWindow){
 			var geocoder = new google.maps.Geocoder();
 			geocoder.geocode({'address': address}, function(results, status) {
@@ -228,6 +229,7 @@
 			});
 		}
 
+        // @param url :request data from url
 		function downloadUrl(url, callback) {
 			var request = window.ActiveXObject ?
 			new ActiveXObject('Microsoft.XMLHTTP') :
