@@ -10,7 +10,7 @@
 	or die("No information return");
 	
 	//$sql = "SELECT SuburbName FROM Suburb WHERE lower(SuburbName) LIKE '%$my_data%' LIMIT 0, 10";
-	$sql = "SELECT DISTINCT Suburb FROM Infringement WHERE Suburb LIKE '%$my_data%' LIMIT 0, 10";
+	$sql = "SELECT DISTINCT Suburb FROM Infringement WHERE Suburb LIKE '%$my_data%' LIMIT 0, 20";
 	$result = mysqli_query($conn,$sql) 
 	or die("No data return");
 	

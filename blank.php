@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+    
+
     <title>Safe Journey To Work</title>
 	<?php include("includes/head.html"); ?>  
 		
 	<!-- <script type="text/javascript">jQuery.noConflict();</script> -->
 	<link rel="stylesheet" type="text/css" href="jquery.autocomplete.css" />
 	<script>
-		$( "#map" ).load( "fines/test.html");
+	$( "#map" ).load( "fines/test.html");
 	</script>	
 	<script>
        //send input value to database
@@ -54,39 +58,91 @@
     <!-- Custom Fonts -->
     <link href="css/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+
 	<style>
-	    #tableContent {			
+	    #tableContent {
+			
 			width:100%;
-			height:400px;			
+			height:400px;
+			
 		}
 	    #map {
-			height: 400px;
-			width:100%;							
-		}
+				height: 400px;
+				width:100%;
+				
+				
+			  }
 		
-		.inputStyle {	
-			padding:10px;	
+		.inputStyle {
+			
+			padding:10px;
+			
 		}	
 
-        #formPosition{			
-			padding-top:90px;	
+        #formPosition{
+			
+			padding-top:90px;
+			
+			
 		}		
 	</style>
+   
+
 </head>
 
 <body onload="initMap()">
+
     <div id="wrapper">
 		<?php include("includes/header.html"); ?>
+        <!-- Navigation -->
+       <!-- <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">-->
+        <!--   <div class="navbar-header"> 
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand navbar-left" href="http://www.safejourneytowork.tk"><span>SafeJourney</span></a>  
+			</div>
+            <!-- /.navbar-header -->
+<!--
+            <ul class="nav navbar-top-links navbar-right">
+                <li id="about"><a href="http://www.safejourneytowork.tk">Home</a></li>
+				<li class="dropdown">
+						<a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"	>
+						Search
+						<span class="caret"></span></a>
+						<ul class="dropdown-menu" aria-labelledby="drop1">
+							<li><a href="search.php"><span>Fines Inquiry</span></a></li>
+							<li><a href="../accidentreport.php">
+							<span>Fines Report</span></a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="accidentreport.php"><span>
+							Safe Routing</span></a></li>
+							
+													 
+						</ul>
+					</li>			         
+				<li id="about"><a href="../feedback.php">Contact</a></li>
+				<li id="about"><a href="../aboutus.php">About</a></li>
+            </ul>
+            <!-- /.navbar-top-links -->
+
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-						<li>   
+                       
+						   
+						
+						<li>
+						    
 						    <div id="formPosition">
+							  
 							    <div id="error">
 						        </div>
 								<form>
 									<div class="form-group inputStyle ">
-										<input type="textbox" class="form-control" name="suburb"  placeholder="Enter Suburb Name" id="suburb_id" >
+										<input type="textbox" class="form-control" name="suburb"  placeholder="Suburb" id="suburb_id" >
 									</div>
 									
 									<div class="form-group inputStyle">
@@ -94,25 +150,30 @@
 									</div>
 						        </form>
 							</div>
-						</li>	
+						</li>
+						
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->
+    <!--    </nav>-->
 
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3 class="page-header">Suburb Infringements based on 2013 and 2014</h3>
+                        <h3 class="page-header">Dashboard</h3>
 						<div id="map">
 						
 						</div>
 						<div id="tableContent">
-						<!-- include the php file for handling the form validation and data -->				
+						<!-- include the php file for handling the form validation and data -->
+						
 						</div>
+						
+						
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -121,41 +182,26 @@
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
+
     </div>
 	
-	<!-- FOOTER -->
-    <footer>
-		<div style="margin:0 20px;">
-			<p class="pull-right"><a href="#">Back to top</a></p>
-			<p class="pull-left">&copy; 2015 MasterMinds, Inc.</p>
-		</div>
-    </footer>
 	
-	<script>
-		var markerdata = [];
-		//initialize map
+	
+   <script>
 		function initMap() {
-			var map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 8,
-				center: {lat: -37.8602828, lng: 145.079616}
-			});
-			var infoWindow = new google.maps.InfoWindow;
-			
-			console.log(markerdata.length);// test 
 
-			document.getElementById('submit').addEventListener('click', function() {
-				//clear the existing markers
-				if(markerdata && markerdata.length > 0) {
-					for(var i=0;i<markerdata.length;i++) {
-						
-						markerdata[i].setMap(null);
-					
-					}
-				}
-				markerdata = [];
-			    //set new markerss
-				geocodeAddress(infoWindow, map);	   
+		  var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 8,
+			center: {lat: -37.8602828, lng: 145.079616}
 		  });
+		  var infoWindow = new google.maps.InfoWindow;
+		  
+		  document.getElementById('submit').addEventListener('click', function() {
+			geocodeAddress(infoWindow, map);
+
+				   
+		  });
+
 		}
 
 		function geocodeAddress(infoWindow, resultsMap) {
@@ -167,32 +213,34 @@
 				var address1 = document.getElementById('suburb_id').value;
 				
 				if(address1.replace(/\s/g,"") == ""){					
-					error = "<div class='alert alert-danger'>Please enter a valid suburb</div>";
+					error = "<div class='alert alert-danger'>Please enter a valid address</div>";
 					$("#error").html(error);
 				}else {				    
 					error = "";
 					$("#error").html(null);
 					
-					for (var i = 0; i < markers.length; i++) {				 
-						var Suburb = markers[i].getAttribute("Suburb");
+					for (var i = 0; i < markers.length; i++) {
 					  
-						if(Suburb.trim().toUpperCase().indexOf(address1.trim().toUpperCase()) !== -1){
-							suburbs.push(Suburb);
-							var InfringementID = markers[i].getAttribute("InfringementID");
-							var Street1 = markers[i].getAttribute("Street1");
-							var Street2 = markers[i].getAttribute("Street2");
-							var no = markers[i].getAttribute("NoOfInfringement");
-							var Fines = markers[i].getAttribute("Fines");
-							var formatFine = Fines.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
-							var address = Street1+" "+"and"+" "+Street2;	  
-							var html = '<b>' + address + '</b> <br/>' +'No. of Infringment: '+ no+'</b> <br/>' +'Total Fines: '+ formatFine;
-							
-							createMarker(address, html, resultsMap, infoWindow);		  
+					  var Suburb = markers[i].getAttribute("Suburb");
+					  
+					  if(Suburb.trim().toUpperCase().indexOf(address1.trim().toUpperCase()) !== -1){
+			              suburbs.push(Suburb);
+						  var InfringementID = markers[i].getAttribute("InfringementID");
+						  var Street1 = markers[i].getAttribute("Street1");
+						  var Street2 = markers[i].getAttribute("Street2");
+						  var no = markers[i].getAttribute("NoOfInfringement");
+						  var Fines = markers[i].getAttribute("Fines");
+						  var formatFine = Fines.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+						  var address = Street1+" "+"and"+" "+Street2;	  
+						  var html = '<b>' + address + '</b> <br/>' +'No. of Infringment: '+ no+'</b> <br/>' +'Total Fines: '+ formatFine;
+						  console.log(address);
+						  createMarker(address, html, resultsMap, infoWindow);		  
+						  
 					  } 
 					}
 					
 					if(suburbs.length == 0){
-						error = "<div class='alert alert-danger'>Suburb not available</div>";						
+						error = "<div class='alert alert-danger'>Information not available</div>";						
 						$("#error").html(error);					
 					} else{					
 						error="";
@@ -203,52 +251,61 @@
 		}
 
 		function createMarker(address, html, resultsMap, infoWindow){
-			var geocoder = new google.maps.Geocoder();
-			geocoder.geocode({'address': address}, function(results, status) {
-				if (status === google.maps.GeocoderStatus.OK) {
-					resultsMap.setCenter(results[0].geometry.location);
-					// push the points in to marker data	  
-					var marker = new google.maps.Marker({
-						map: resultsMap,
-						position: results[0].geometry.location
-					});
-						//set the infor window for each marker
-                     markerdata.push(marker);
-					bindInfoWindow(marker, resultsMap, infoWindow, html);						  
-				} else {
-					console.log('Geocode was not successful for the following reason: ' + status);
-				}
-			});   
+
+			 var geocoder = new google.maps.Geocoder();
+					  geocoder.geocode({'address': address}, function(results, status) {
+						if (status === google.maps.GeocoderStatus.OK) {
+						  resultsMap.setCenter(results[0].geometry.location);
+						  
+						  var marker = new google.maps.Marker({
+							map: resultsMap,
+							position: results[0].geometry.location
+						  });
+						 
+
+						  bindInfoWindow(marker, resultsMap, infoWindow, html);
+						  
+						} else {
+						  console.log('Geocode was not successful for the following reason: ' + status);
+						}
+					  });   
+
+
+
+
 		}
 
-		function bindInfoWindow(marker, map, infoWindow, html) {
+
+		 function bindInfoWindow(marker, map, infoWindow, html) {
 			google.maps.event.addListener(marker, 'click', function() {
-				infoWindow.setContent(html);
-				infoWindow.open(map, marker);
-			});
+			infoWindow.setContent(html);
+			infoWindow.open(map, marker);
+		  });
 		}
+
 
 		function downloadUrl(url, callback) {
-			var request = window.ActiveXObject ?
-			new ActiveXObject('Microsoft.XMLHTTP') :
-			new XMLHttpRequest;
+				var request = window.ActiveXObject ?
+				new ActiveXObject('Microsoft.XMLHTTP') :
+				new XMLHttpRequest;
 
 			request.onreadystatechange = function() {
 				if (request.readyState == 4) {
-					request.onreadystatechange = doNothing;
-					callback(request, request.status);
+				  request.onreadystatechange = doNothing;
+				  callback(request, request.status);
 				}
 			};
 			request.open('GET', url, true);
 			request.send(null);
 		}
 
-		function doNothing() {}
-	</script>
-		
-    <!-- /#wrapper -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+			function doNothing() {}
+	</script>s
 	
+	
+    <!-- /#wrapper -->
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
     <!-- jQuery -->
     <script src="css/bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -271,4 +328,5 @@
 	<script type="text/javascript" src="js/jquery.autocomplete.js"></script> 
 
 </body>
+
 </html>

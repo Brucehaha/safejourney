@@ -3,25 +3,26 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<!-- Morris chart style -->
-		<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.5.1.css">
-		  <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-		<style>		    
-			<!-- Responsive tables firefox -->
-			@-moz-document url-prefix() {
-				fieldset { display: table-cell; }
-			}			
-	   </style>
-	   <!-- Head style -->
-	   <?php include("includes/head.html"); ?>  
+	<!-- Morris chart style -->
+	<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.5.1.css">
+	
+	<style>		    
+		<!-- Responsive tables firefox -->
+		@-moz-document url-prefix() {
+			fieldset { display: table-cell; }
+		}	
+
+	</style>
+
+	<!-- Head style -->
+	<?php include("includes/head.html"); ?>  
 	   
-	   <script type="text/javascript">
-			$(document).ready(function() {
-				//Initially hide div with the paragraph which indicating the location of graphs
-				$("#searchList2").hide();
-			});
-	   </script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//Initially hide div with the paragraph which indicating the location of graphs
+			$("#searchList2").hide();
+		});
+	</script>
   </head>
   
   <body>
@@ -29,58 +30,43 @@
 	<?php include("includes/header.html"); ?>
 
     <div class="container">
-		<div class="row">
-			<div class="col-md-2 left-side" >
-				<h4>Year</h4>
-				<ul style="list-style-type:none;">
-				  <li>2010</li>
-				  <li>2011</li>
-				  <li>2012</li>
-				  <li>2013</li>
-				  <li>2014</li>
-				</ul>
+		<div class="row">			
+			<div class="col-md-12 searchpanel">				
+				<p style="font-size:130%;color:grey;margin-top:10px;margin-bottom:10px;">In recent years, an increasing number of accidents happened on the road for daily frequent commuters. The safety is always the most important issue all the world wide. We provide the data report for last five years from 2010 to 2014.</p>
 				<hr>
-				<h4>Comparison</h4>
-				<ul style="list-style-type:none;">
-				<li><input type="submit" id="monthly" class="btn" name="monthlyBtn" value="Monthly" style="width:80px;height:40px;" disabled /></li><br />
-				<li><input type="submit" id="daily" class="btn" name="dailyBtn" value="Daily" style="width:80px;height:40px;" disabled /></li><br />
-				<li><input type="submit" id="time" class="btn" name="timeBtn" value="Time" style="width:80px;height:40px;" disabled /></li><br />
-			</div>
-			<div class="col-md-10 right-side">
-				<div style="text-align:center;">
-					<p style="font-size:160%;color:grey;margin:30px 10px;">In recent years, an increasing number of accidents happened on the road for daily frequent commuters. The safety is always the most important issue all the world wide.</p> 
-					<!-- Dropdown list for user selection to display the relevant chart -->
-					<div>
-						<label for="searchList">Search by</label>
-						<select id="searchList" name="searchList" style="width:150px;">
-							<option selected>Choose One...</option>
-							<option value="year">Year</option>
-							<option value="weekday">Daily</option>
-							<option value="daytime">24 Hours</option>
-							<option value="light">Light Condition</option>
-							<option value="speed">Speed Zone</option>
-						</select>
-						<select id="searchList2" name="searchList2" style="width:150px;">
-							<option value="none" selected>Select option...</option>
-							<option value="q1">Quarter 1</option>
-							<option value="q2">Quarter 2</option>
-							<option value="q3">Quarter 3</option>
-							<option value="q4">Quarter 4</option>
-							<option value="compare">Monthly Comparison</option>
-						</select>
-						<input type="submit" id="select" class="btn" name="searchBtn" value="Search" />
-					</div>	
-				</div>
+				<h3>Dashboard <i class="glyphicon glyphicon-search"></i></h3>
+				<!-- Dropdown list for user selection to display the relevant chart -->
+				<div class="searchinput">
+					<label for="searchList">Search by</label>
+					<select id="searchList" name="searchList" style="width:160px;">
+						<option selected>Choose One...</option>
+						<option value="year">Year</option>
+						<option value="weekday">Weekly</option>
+						<option value="daytime">Daily</option>
+						<option value="light">Light Condition</option>
+						<option value="speed">Speed Zone</option>
+					</select>
+					<select id="searchList2" name="searchList2" style="width:160px;">
+						<option value="none" selected>Select option...</option>
+						<option value="q1">Quarter 1</option>
+						<option value="q2">Quarter 2</option>
+						<option value="q3">Quarter 3</option>
+						<option value="q4">Quarter 4</option>
+						<option value="compare">Monthly Comparison</option>
+					</select>
+						
+					<input type="submit" id="select" class="btn" name="searchBtn" value="Search" />
+				</div>	
 					
 				<div style="text-align:center;">
 					<!-- Display the graph report here -->
-					<div style="text-align:center;"> 					
+					<div class="col-md-8 col-md-offset-2" style="text-align:center;"> 					
 						<div id="resultpanel"></div>
 					</div>   
 				</div>
-			</div>	
-		</div>
-	</div>
+			</div>	<!--end of col-md-9 -->
+		</div> <!--end of row -->
+	</div> <!--end of container -->
 	
 	<!-- FOOTER -->
     <footer>
@@ -145,7 +131,7 @@
 		});
 
 	</script> 
-	
+	<!-- script references -->
 	<script src="js/bootstrap.min.js"></script>
   </body>
 </html>

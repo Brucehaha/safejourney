@@ -4,7 +4,7 @@
 			$strInputSuburb = "";
 			$strInputStreet = "";
 			
-			$strInputSuburb = $_POST["suburb"];
+			$strInputSuburb = $_POST["suburb_id"];
 			$strInputStreet = $_POST["street"];		
 	
 			//Check if the input box is empty or not
@@ -40,11 +40,8 @@
 					echo "</div>";
 				}
 				else {
-					echo "<div style='padding:9px 0 0 5px;color:grey' id='Alertposition' class='col-md-3 col-md-offset-2'>";
-					echo "<div class='alert alert-danger' role='alert'>";
-					echo "No data found! Please search again!";
-					echo "</div>";
-					echo "</div>";
+					echo " ";
+
 				} 
 				
 				//Release the SQL clause
@@ -53,11 +50,8 @@
 				mysqli_close($conn);
 			}
 			else {
-				echo "<div style='padding:9px 0 0 5px;color:grey'  class='col-md-3 col-md-offset-2'>";
-				echo "<div class='alert alert-danger' role='alert'>";
-				echo "Please type any <b>Suburb</b> or <b>Street</b>.";
-				echo "</div>";
-				echo "</div>";
+				echo " ";
+
 			}
 		}	
 	?> 	       

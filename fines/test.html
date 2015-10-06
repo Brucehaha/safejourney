@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geocoding service</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+	#floating-panel {
+	  position: absolute;
+	  top: 10px;
+	  left: 25%;
+	  z-index: 5;
+	  background-color: #fff;
+	  padding: 5px;
+	  border: 1px solid #999;
+	  text-align: center;
+	  font-family: 'Roboto','sans-serif';
+	  line-height: 30px;
+	  padding-left: 10px;
+	}
+
+    </style>
+  </head>
+  <body>
+    <div id="floating-panel">
+      <input id="address" type="textbox" value="Sydney, NSW">
+
+      <input id="submit" type="button" value="Geocode">
+    </div>
+    <div id="map"></div>
+  <script>
+<!-- var htmls = []; -->
+
+function initMap() {
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 8,
+    center: {lat: -37.8602828, lng: 145.079616}
+  });
+  var infoWindow = new google.maps.InfoWindow;
+  <!-- window.alert(htmls); -->
+  document.getElementById('submit').addEventListener('click', function() {
+    geocodeAddress(infoWindow, map);
+
+           //window.alert(htmls);
+  });
+
+}
+
+function geocodeAddress(infoWindow, resultsMap) {
+ 
+   <!--  htmls.push("red");
+	 -->
+	downloadUrl("mapxml.php", function(data) {
+        var xml = data.responseXML;
+        var markers = xml.documentElement.getElementsByTagName("marker");
+		var address1 = document.getElementById('address').value;
+        //var html;
+		for (var i = 0; i < markers.length; i++) {
+          
+          var Suburb = markers[i].getAttribute("Suburb");
+		  
+		  if(Suburb.indexOf(address1) > -1){
+		     <!--  console.log(Suburb); -->
+		     
+			  
+			  var InfringementID = markers[i].getAttribute("InfringementID");
+			  var Street1 = markers[i].getAttribute("Street1");
+			  var Street2 = markers[i].getAttribute("Street2");
+			  var no = markers[i].getAttribute("NoOfInfringement");
+			  var Fines = markers[i].getAttribute("Fines");
+			  var formatFine = Fines.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+			  var address = Street1+" "+"and"+" "+Street2;	  
+			  var html = '<b>' + address + '</b> <br/>' +'No. of Infringment: '+ no+'</b> <br/>' +'Total Fines: '+ formatFine;
+			  
+			 <!--  //add html to array
+			  <!-- htmls.push(html); -->
+			  console.log(html);
+			  <!--  -->
+			  
+			  <!-- var infowindow = new google.maps.InfoWindow({ -->
+				<!-- content: html -->
+			  <!-- }); d-->
+
+
+			 createMarker(address, html, resultsMap, infoWindow);
+			
+
+			  
+			  
+			  
+		  } else {
+		     console.log("not martch");
+		  };
+         
+        }
+      });
+    
+	 
+	<!-- for (var i = 0; i < htmls.length; i++) { -->
+		<!-- console.log(htmls[i]); -->
+		<!-- console.log(markersPo[i]); -->
+		
+		<!-- bindInfoWindow(markersPo[i], resultsMap, infoWindow, htmls[i]); -->
+	
+	
+	
+	<!-- }; -->
+<!-- console.log(htmls); -->
+ 
+}
+
+function createMarker(address, html, resultsMap, infoWindow){
+
+	 var geocoder = new google.maps.Geocoder();
+			  geocoder.geocode({'address': address}, function(results, status) {
+				if (status === google.maps.GeocoderStatus.OK) {
+				  resultsMap.setCenter(results[0].geometry.location);
+				  
+				  var marker = new google.maps.Marker({
+					map: resultsMap,
+					position: results[0].geometry.location
+				  });
+				   <!-- markersPo.push(marker); -->
+				  
+				 <!-- marker.addListener('click', function() { -->
+					<!-- infowindow.open(resultsMap, marker); -->
+				  <!-- });   -->
+
+				  bindInfoWindow(marker, resultsMap, infoWindow, html);
+				  
+				} else {
+				  alert('Geocode was not successful for the following reason: ' + status);
+				}
+			  });   
+
+
+
+
+}
+
+
+ function bindInfoWindow(marker, map, infoWindow, html) {
+	google.maps.event.addListener(marker, 'click', function() {
+	infoWindow.setContent(html);
+	infoWindow.open(map, marker);
+  });
+}
+
+
+function downloadUrl(url, callback) {
+		var request = window.ActiveXObject ?
+		new ActiveXObject('Microsoft.XMLHTTP') :
+		new XMLHttpRequest;
+
+	request.onreadystatechange = function() {
+		if (request.readyState == 4) {
+		  request.onreadystatechange = doNothing;
+		  callback(request, request.status);
+		}
+	};
+	request.open('GET', url, true);
+	request.send(null);
+}
+
+function doNothing() {}
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
+  </body>
+</html>
