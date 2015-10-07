@@ -210,11 +210,13 @@
 
 </head>
 <body onload="initialize()">
+	<!--Navigation bar and style-->
 	<?php include("../includes/header.html"); ?>
+	
 	<div id="map_canvas"></div>
 	<div class="container1">
 		<div id="accordion" >
-			<div class="header1"><span>Click To Collapse<i class="fa fa-align-justify"></i></span></span></div>
+			<div class="header1"><span>Click To Collapse<i class="fa fa-align-justify"></i></span></div>
 			<div class="wraper">
 				<form>
 					<div class="form-group">						
@@ -228,7 +230,15 @@
 			</div>
 		</div>	
 	</div>
-
+	
+	<!-- FOOTER -->
+    <footer>
+		<div style="margin:0 20px;">
+			<p class="pull-right"><a href="#">Back to top</a></p>
+			<p class="pull-left">&copy; 2015 MasterMinds, Inc.</p>
+		</div>
+    </footer>
+	
 	<script>
 		$(".header1").click(function () {
 			$header1 = $(this);
