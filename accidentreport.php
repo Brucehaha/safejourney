@@ -29,16 +29,15 @@
 	<!--Navigation bar and style-->
 	<?php include("includes/header.html"); ?>
 
-    <div class="container">
+    <div class="container reportcontainer">
 		<div class="row">			
 			<div class="col-md-12 searchpanel">				
-				<p style="font-size:130%;color:grey;margin-top:10px;margin-bottom:10px;">In recent years, an increasing number of accidents happened on the road for daily frequent commuters. The safety is always the most important issue all the world wide. We provide the data report for last five years from 2010 to 2014.</p>
+				<p style="font-size:130%;color:grey;margin-top:10px;margin-bottom:10px;">In recent years, the number of accidents happened on the road has increased. The safety is always the most important issue all the world wide. We provide the data report for last five years from 2010 to 2014.</p>
 				<hr>
-				<h3>Dashboard <i class="glyphicon glyphicon-search"></i></h3>
 				<!-- Dropdown list for user selection to display the relevant chart -->
 				<div class="searchinput">
-					<label for="searchList">Search by</label>
-					<select id="searchList" name="searchList" style="width:160px;">
+					<label for="searchList" style="font-size:16px;">Search by </label>
+					<select id="searchList" name="searchList" style="width:180px;height:30px;font-size:16px;">
 						<option value="" disabled selected style="display:none;">Select your option...</option>
 						<option value="year">Year</option>
 						<option value="weekday">Weekly</option>
@@ -46,7 +45,7 @@
 						<option value="light">Light Condition</option>
 						<option value="speed">Speed Zone</option>
 					</select>
-					<select id="searchList2" name="searchList2" style="width:160px;">
+					<select id="searchList2" name="searchList2" style="width:180px;height:30px;font-size:16px;">
 						<option value="" disabled selected style="display:none;">Select your option...</option>
 						<option value="q1">Quarter 1</option>
 						<option value="q2">Quarter 2</option>
@@ -70,9 +69,9 @@
 	
 	<!-- FOOTER -->
     <footer>
-		<div style="margin:0 20px;">
-			<p class="pull-right"><a href="#">Back to top</a></p>
-			<p class="pull-left">&copy; 2015 MasterMinds, Inc.</p>
+		<div class="footer">
+			<p class="pull-left">&copy; 2015 MasterMinds, Inc.<br /><br />
+			Disclaimer: <span style="color:grey;">The information contained in this website is to make daily commuter familiar with road accidents and infringements. The data is collected from Victoria government <a href="https://www.data.vic.gov.au/">open data</a>. We are not responsible for any harm caused by using the provided in formation.</span></p>
 		</div>
     </footer>
 	

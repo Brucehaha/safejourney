@@ -30,7 +30,7 @@
 		<div class="row aboutcontainer">
 			<h2>What do you concern more about on your way to work?</h2><br /><br /><br /><br />
 		</div>	
-		<hr>
+		<hr />
 		<div class="row aboutimage">
 			<div class="col-md-4">
 				<img src="images/fines.jpg" class="img-responsive">
@@ -51,12 +51,12 @@
 			</div>
 		</div>
 	</div>
-
+	<hr />
 	<!-- FOOTER -->
     <footer>
-		<div style="margin:0 20px;">
-			<p class="pull-right"><a href="#">Back to top</a></p>
-			<p class="pull-left">&copy; 2015 MasterMinds, Inc.</p>
+		<div class="footer">
+			<p class="pull-left">&copy; 2015 MasterMinds, Inc.<br /><br />
+			Disclaimer: <span style="color:grey;">The information contained in this website is to make daily commuter familiar with road accidents and infringements. The data is collected from Victoria government <a href="https://www.data.vic.gov.au/">open data</a>. We are not responsible for any harm caused by using the provided in formation.</span></p>
 		</div>
     </footer>
     
