@@ -227,19 +227,8 @@
 					</div>
 						<input type="button" name="submit" class="btn" value="Search" id="submit" />					
 				</form>
-				<div>
-					<div id="accidentNo">
-					<span>Accident No.:<span>
-				   </div>
-					<ul>
-						<li  id="icon1"><span></span>High</li>
-						<li id="icon2"><span ></span>Medium</li>
-						<li id="icon3"><span ></span>Low</li>
-					</ul>
-					</div>
 			</div>
 		</div>	
-		
 	</div>
 	
 	<!-- FOOTER -->

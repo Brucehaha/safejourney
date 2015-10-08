@@ -427,9 +427,44 @@ form {
 	opacity:0.9;
 	}
 	
-.container1 div {
-	/* width:100%;	 */
+.container1  #icon2{
+
+	background-image: url(images/icon2.png);
+	 background-repeat: no-repeat;
+     
+    background-position: left top;
+    padding-left:30px;
+    
+	
 	}		
+.container1  #icon1{
+	background-image: url(images/icon1.png);
+	padding-left:30px;
+	
+	 background-repeat: no-repeat;
+    
+    background-position: left top;
+
+    
+
+	}	
+.container1  #icon3{
+
+	background-image: url(images/icon3.png);
+     padding-left:30px;
+    
+	 background-repeat: no-repeat;
+    
+    background-position: left top;
+
+	
+	}	
+	#accidentNo{
+
+       text-align: left;
+
+	}
+
 
 .container1 .header1 {
 	background-color:#198F6F;
@@ -449,7 +484,13 @@ form {
 	font-style:italic;
 	font-family:Spirax;
 	}
+.container1 li {
 
+   float:left;
+   padding: 5px 40px 40px 40px;	
+   list-style: none;
+
+}
  /* Accident report sidebar style */
 .left_sidebar {
 	margin-top:30px;
