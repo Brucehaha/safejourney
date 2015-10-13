@@ -133,7 +133,17 @@
         <!-- /#page-wrapper -->
     </div>
 	
+<<<<<<< HEAD
 	<?php include("includes/footer.html"); ?>
+=======
+	<!-- FOOTER -->
+    <footer>
+		<div class="footer">
+			<p class="pull-left">&copy; 2015 MasterMinds, Inc.<br /><br />
+			Disclaimer: <span style="color:grey;">The information contained in this website is to make daily commuter familiar with road accidents and infringements. The data is collected from Victoria government <a href="https://www.data.vic.gov.au/">open data</a>. We are not responsible for any harm caused by using the provided in formation.</span></p>
+		</div>
+    </footer>
+>>>>>>> 67909f760484411fc1a845ee97e95148bac85576
 	
 	<script>
 		var markerdata = [];

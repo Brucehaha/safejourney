@@ -5,6 +5,16 @@ body {
 	padding-bottom: 10px;
 	color: #5a5a5a;
 	}
+
+.footer {
+	margin:0;
+	padding:0;
+	font-weight:bold;
+	font-size:14px;
+	color:#198F6F;
+    height:30px;
+	text-align:center;
+	}
 	
 /* navbar style */
 .navbar-brand {
@@ -285,7 +295,7 @@ a.linkDetails:hover {
 	text-align:center;
 	margin:20px;
 	}
-
+	
 #feedbackcontainer{
 	background-image:
 		linear-gradient(
@@ -294,7 +304,6 @@ a.linkDetails:hover {
 		),
 		url("images/feedback.jpg");
 	background-size:cover;
-    height:590px;
 	width:100%;
     margin:0;
     padding:0;
@@ -428,43 +437,26 @@ form {
 	}
 	
 .container1  #icon2{
-
 	background-image: url(images/icon2.png);
-	 background-repeat: no-repeat;
-     
+	background-repeat: no-repeat;     
     background-position: left top;
-    padding-left:30px;
-    
-	
+    padding-left:30px;	
 	}		
 .container1  #icon1{
 	background-image: url(images/icon1.png);
-	padding-left:30px;
-	
-	 background-repeat: no-repeat;
-    
+	padding-left:30px;	
+	background-repeat: no-repeat;   
     background-position: left top;
-
-    
-
 	}	
 .container1  #icon3{
-
 	background-image: url(images/icon3.png);
-     padding-left:30px;
-    
-	 background-repeat: no-repeat;
-    
+    padding-left:30px;
+	background-repeat: no-repeat;   
     background-position: left top;
-
-	
 	}	
-	#accidentNo{
-
-       text-align: left;
-
+#accidentNo{
+    text-align: left;
 	}
-
 
 .container1 .header1 {
 	background-color:#198F6F;
@@ -501,8 +493,17 @@ form {
 	margin-top:30px;
 }
 
-i {
-	font-size:16px;
+.searchinput {
+	text-align:center;
+}
+
+.reportcontainer {
+	background-color:#E8F4F1;
+	background-size:cover;
+	width:100%;
+	height:100%;
+    margin:0;
+    padding:0;
 	}
 
 .nav > li > a {
@@ -525,5 +526,12 @@ i {
 	-o-border-radius: 10px;
 	border-radius: 10px;
 	}
+	
+  /*404*/
+#error_image {
+
+	padding-top:100px;
+
+}
 
        
