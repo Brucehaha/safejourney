@@ -6,6 +6,8 @@
 		
 	<!-- <script type="text/javascript">jQuery.noConflict();</script> -->
 	<link rel="stylesheet" type="text/css" href="jquery.autocomplete.css" />
+    <script type="text/javascript" src="js/jquery.autocomplete.js"></script>
+
 	<script>
 		$( "#map" ).load( "fines/test.html");
 	</script>	
@@ -35,11 +37,6 @@
 			});
 		});
 			
-		$(document).ready(function(){				
-			$("#street_id").autocomplete("streetautocomplete.php", {
-			selectFirst: false
-			});
-		});
 	</script>
 
     <!-- Bootstrap Core CSS -->
@@ -104,9 +101,22 @@
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
+            	
                 <div class="row">
+                	
                     <div class="col-lg-12">
-                        <h3 class="page-header">Suburb Infringements based on 2013 and 2014</h3>
+                    	<h4>
+                        <ul class="breadcrumb">
+                        	<li>
+                        		<a href="index.html">
+                        			<i class="fa fa-home">
+                        				Home
+                        			</i>
+                        		</a>
+                        	</li>
+                        	<li class="active">Safe Crossing</li>
+                        </ul>
+                    </h4>
 						<div id="map">
 						
 						</div>
@@ -123,13 +133,7 @@
         <!-- /#page-wrapper -->
     </div>
 	
-	<!-- FOOTER -->
-    <footer>
-		<div style="margin:0 20px;">
-			<p class="pull-right"><a href="#">Back to top</a></p>
-			<p class="pull-left">&copy; 2015 MasterMinds, Inc.</p>
-		</div>
-    </footer>
+	<?php include("includes/footer.html"); ?>
 	
 	<script>
 		var markerdata = [];
@@ -185,7 +189,7 @@
 							var no = markers[i].getAttribute("NoOfInfringement");
 							var Fines = markers[i].getAttribute("Fines");
 							var formatFine = Fines.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
-							var address = Street1+" "+"and"+" "+Street2+" "+"Melbourne";	  
+							var address = Street1+" "+"and"+" "+Street2+", "+Suburb+", "+"VIC Australia";	  
 							var html = '<b>' + address + '</b> <br/>' +'No. of Infringment: '+ no+'</b> <br/>' +'Total Fines: '+ formatFine;
 							
 							createMarker(address, html, resultsMap, infoWindow);		  
@@ -193,7 +197,7 @@
 					}
 					
 					if(suburbs.length == 0){
-						error = "<div class='alert alert-danger'>Suburb not available</div>";						
+						error = "<div class='alert alert-danger'>Please enter a valid suburb</div>";						
 						$("#error").html(error);					
 					} else{					
 						error="";

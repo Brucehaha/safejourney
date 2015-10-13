@@ -2,7 +2,6 @@
 	//Check the form if submit by post
 		if (isset($_POST["searchBtn"])) {
 			$strInputSuburb = "";
-			// $strInputStreet = "";
 			
 			$strInputSuburb = $_POST["suburb_id"];		
 	
